@@ -1,9 +1,7 @@
-import { Login } from './container';
+import { LoginContainer } from "./container";
 
 const LoginPage = () => {
-  return (
-    <Login />
-  );
+  return <LoginContainer />;
 };
 
 export default LoginPage;

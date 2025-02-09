@@ -3,23 +3,18 @@ import * as React from "react";
 import DataGridDemo from "./data-table";
 import {
   TextField,
-  Breadcrumbs,
   Grid,
   Box,
-  Tabs,
-  Tab,
   Button,
   Stack,
   Typography,
   Modal,
-  Alert,
+  Alert
 } from "@mui/material";
-import AddIcon from "@mui/icons-material/Add";
-import Link from "next/link";
-import SideBar from "@/components/Sidebar";
 import axios from "axios";
 import { get, isEmpty } from "lodash";
-import { ShowSuccess } from "@/utils";
+import { getProduct } from "@/services/productServices";
+import AddIcon from "@mui/icons-material/Add";
 
 const style = {
   position: "absolute",
@@ -34,21 +29,20 @@ const style = {
 };
 
 export const PageContainer = () => {
-  const [tasks, setTasks] = React.useState<string[]>([]);
+  const [products, setProducts] = React.useState<readonly []>([]);
   const [show, setShow] = React.useState<boolean>(false);
   const [open, setOpen] = React.useState<boolean>(false);
-  const [index, setIndex] = React.useState<number>(0);
   const [id, setId] = React.useState<string>("");
   const [task, setTask] = React.useState<string>("");
   const [desc, setDesc] = React.useState<string>("");
   const [taskErr, setTaskErr] = React.useState<string>("");
   const [descErr, setDescErr] = React.useState<string>("");
 
-  const getTasks = async () => {
+  const getProducts = async () => {
     try {
-      const res = await axios.get("http://localhost:1010/task");
-      if (get(res, "data.success", false)) {
-        setTasks(get(res, "data.data", []));
+      const res = await getProduct();
+      if (get(res, "success", false)) {
+        setProducts(get(res, "data", []));
       }
     } catch (error) {
       console.log(error);
@@ -56,7 +50,7 @@ export const PageContainer = () => {
   };
 
   React.useEffect(() => {
-    getTasks();
+    getProducts();
   }, []);
 
   const validation = () => {
@@ -84,8 +78,7 @@ export const PageContainer = () => {
         setShow(false);
         setTask("");
         setDesc("");
-        getTasks();
-        ShowSuccess("Added Successfully !");
+        getProducts();
       }
     } catch (error) {
       console.log(error);
@@ -100,26 +93,14 @@ export const PageContainer = () => {
   const handleDelete = async () => {
     const res = await axios.delete(`http://localhost:1010/task/${id}`);
     if (get(res, "data.success", false)) {
-      getTasks();
+      getProducts();
       setOpen(false);
       return <Alert severity="success">Deleted Successfully !</Alert>;
     }
   };
 
   return (
-    <div style={{ padding: "24px" }}>
-      <SideBar />
-      <br />
-      <br />
-      <Breadcrumbs separator="›" aria-label="breadcrumb">
-        <Link color="inherit" href="#">
-          Home
-        </Link>
-        <Link color="inherit" href="#">
-          Create
-        </Link>
-      </Breadcrumbs>
-      <br />
+    <div>
       {show && (
         <>
           <Box
@@ -137,7 +118,7 @@ export const PageContainer = () => {
             >
               Add New Task
             </Typography>
-            <br />
+
             <Grid container spacing={2}>
               <Grid item xs={4}>
                 <TextField
@@ -202,30 +183,18 @@ export const PageContainer = () => {
 
       {!show && (
         <>
-          <Box sx={{ width: "100%" }}>
-            <Grid container spacing={2}>
-              <Grid item xs={10.5}>
-                <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-                  <Tabs value={index} aria-label="basic tabs example">
-                    <Tab onClick={() => setIndex(0)} label="Pending" />
-                    <Tab onClick={() => setIndex(1)} label="Completed" />
-                    <Tab onClick={() => setIndex(2)} label="Done" />
-                  </Tabs>
-                </Box>
-              </Grid>
-              <Grid item xs={1.5}>
-                <Button
-                  component="label"
-                  variant="contained"
-                  startIcon={<AddIcon />}
-                  onClick={() => setShow(true)}
-                >
-                  Add New Task
-                </Button>
-              </Grid>
-            </Grid>
-          </Box>
-          <DataGridDemo rows={tasks} handleDeleteClick={handleDeleteClick} />
+          <Stack direction="row" spacing={2} justifyContent="end">
+            <Button
+              variant="contained"
+              size="medium"
+              onClick={handleSubmit}
+              startIcon={<AddIcon />}
+            >
+              Add Product
+            </Button>
+          </Stack>
+          <br />
+          <DataGridDemo rows={products} handleDeleteClick={handleDeleteClick} />
 
           <Modal
             open={open}

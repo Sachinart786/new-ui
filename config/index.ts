@@ -1,1 +1,1 @@
-export const URL = "http://localhost:1010";
+export const APIURL = "https://new-apis-beryl.vercel.app";
