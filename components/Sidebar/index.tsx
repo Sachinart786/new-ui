@@ -136,27 +136,29 @@ const SideBar = () => {
   );
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box>
       <AppBar
         position="static"
         style={{
-          background: "linear-gradient(to right, #80dde0, #92fcaf)",
-          // borderRadius: "5px",
+          background: "linear-gradient(135deg, #ff7e5f, #feb47b)",
+          // background: "linear-gradient(to right, #80dde0, #92fcaf)",
+          borderRadius: "5px",
         }}
       >
         <Toolbar>
-          <h2
-            style={{
-              background: "linear-gradient(90deg, #a51bd5 57.69%, #2c79c0 77.82%, #2cb7c0 97.74%)",
-              backgroundClip: "text",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent"
-            }}
-          >
-  
-  Shubham Bar & Restaurant
-
-          </h2>
+          {/* <div style={{ display: "flex", flexDirection: "column", gap: "-5px" }}> */}
+            <h2
+              style={{
+                background:
+                  "linear-gradient(120deg, #a51bd5, #2c79c0, #2cb7c0)",
+                backgroundClip: "text",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+              }}
+            >
+              90s Flac
+            </h2>
+          {/* </div> */}
 
           <Box sx={{ flexGrow: 0.1 }} />
 
