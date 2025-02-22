@@ -6,12 +6,16 @@ import {
   Pagination,
   PaginationItem,
   CircularProgress,
+  Box,
+  Typography,
 } from "@mui/material";
 import { get } from "lodash";
-import { getProduct } from "@/services/productServices";
+import { getAlbums } from "@/services/albumServices";
+import { useRouter } from "next/navigation";
 
 export const PageContainer = () => {
-  const [products, setProducts] = useState<[]>([]);
+  const router = useRouter();
+  const [albums, setAlbums] = useState<[]>([]);
   const [totalPages, setTotalPages] = useState<number>(0);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [loading, setLoading] = useState<boolean>(true);
@@ -19,10 +23,10 @@ export const PageContainer = () => {
   const itemsPerPage = 16;
   const getProducts = async (page: number) => {
     try {
-      const res = await getProduct(page, itemsPerPage);
+      const res = await getAlbums(page, itemsPerPage);
       if (get(res, "success", false)) {
         setLoading(false);
-        setProducts(get(res, "data", []));
+        setAlbums(get(res, "data", []));
         setTotalPages(get(res, "totalPages", ""));
       }
     } catch (error) {
@@ -49,27 +53,58 @@ export const PageContainer = () => {
         </Stack>
       ) : (
         <>
-          <Grid container spacing={2}>
-            {products &&
-              products.length > 0 &&
-              products.map((item: any) => (
-                <Grid item xs={3} key={item.id}>
-                  <div style={{ textAlign: "center" }}>
-                    <img
-                      style={{
-                        width: "180px",
-                        height: "180px",
+          {albums && albums.length > 0 && (
+            <Grid container spacing={3}>
+              {albums.map((item: any) => (
+                <Grid item xs={12} sm={6} md={4} lg={3} key={item._id}>
+                  <div
+                    onClick={() => router.push(`/product/${item._id}`)}
+                    style={{ cursor: "pointer" }}
+                  >
+                    <Box
+                      sx={{
+                        width: "100%",
+                        height: "280px",
+                        borderRadius: "5px",
+                        overflow: "hidden",
+                        boxShadow: 1,
+                        transition:
+                          "transform 0.3s ease, background-color 0.3s ease",
+                        "&:hover": {
+                          backgroundColor: "rgba(194, 188, 188, 0.1)",
+                        },
                       }}
-                      src={item.image}
-                      alt={item.title}
-                      loading="lazy"
-                    />
-                    <h6>{item.title}</h6>
+                    >
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          objectFit: "cover",
+                        }}
+                        loading="lazy"
+                      />
+                    </Box>
+
+                    <Typography
+                      variant="body2"
+                      color="#323c64"
+                      sx={{
+                        textAlign: "center",
+                        mt: 1,
+                        fontSize: "17px",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      {item.title} - {item.year}
+                    </Typography>
                   </div>
                 </Grid>
               ))}
-          </Grid>
-          {products && products.length > 0 && (
+            </Grid>
+          )}
+          {albums && albums.length > 0 && (
             <Stack
               spacing={2}
               mt={3}
