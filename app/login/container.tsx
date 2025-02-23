@@ -7,11 +7,9 @@ import { setCookie } from "cookies-next";
 import Link from "next/link";
 import { get } from "lodash";
 import { useRouter } from "next/navigation";
-import { useNotification } from "@/utils";
 
 export const LoginContainer = () => {
   const router = useRouter();
-  const { showSuccess, showError } = useNotification();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -32,9 +30,9 @@ export const LoginContainer = () => {
           router.push("/");
         }, 0);
         // showSuccess(toaster, "Login Successfully");
-        showSuccess("Login Successfully");
+        // showSuccess("Login Successfully");
       } else {
-        showError("Invalid email or password");
+        // showError("Invalid email or password");
       }
     } catch (error) {
       console.error("Login error:", error);
