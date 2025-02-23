@@ -1,19 +1,14 @@
 {
   "git": {
     "deploymentEnabled": {
-      "main": false
+      "main": true,
+      "staging": true
     }
   },
   "builds": [
     {
       "src": "package.json",
-      "use": "@vercel/node"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/index.js"
+      "use": "@vercel/next"
     }
   ]
 }
