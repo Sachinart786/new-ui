@@ -93,7 +93,7 @@ export const PageContainer = () => {
                       sx={{
                         textAlign: "center",
                         mt: 1,
-                        fontSize: "17px",
+                        fontSize: "16px",
                         fontWeight: "bold",
                       }}
                     >

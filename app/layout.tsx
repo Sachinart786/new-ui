@@ -66,7 +66,7 @@ export default function RootLayout({
     <html lang="en" className={`${poppins.variable}`}>
       <body>
         <SideBar />
-        <main style={{padding: "18px", height: "100%"}}>{children}</main>
+        <main style={{padding: "18px"}}>{children}</main>
       </body>
     </html>
   );

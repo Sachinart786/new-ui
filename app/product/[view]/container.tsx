@@ -3,7 +3,7 @@ import { Stack, Button, Typography, Box, Grid } from "@mui/material";
 import Link from "next/link";
 import React from "react";
 
-export const PageContainer = ({ album }: any) => {
+export const PageContainer = ({ isToken, album }: any) => {
   return (
     <Box>
       <Grid container spacing={8} alignItems="flex-start">
@@ -32,8 +32,18 @@ export const PageContainer = ({ album }: any) => {
           >
             {album.title} - {album.year}
           </Typography>
-          <Typography variant="body1" sx={{ fontSize: "16px", fontWeight: "bold" }}>Music: {album.music}</Typography>
-          <Typography variant="body1" sx={{ fontSize: "16px", fontWeight: "bold" }}>Lyric: {album.lyric}</Typography>
+          <Typography
+            variant="body1"
+            sx={{ fontSize: "16px", fontWeight: "bold" }}
+          >
+            Music: {album.music}
+          </Typography>
+          <Typography
+            variant="body1"
+            sx={{ fontSize: "16px", fontWeight: "bold" }}
+          >
+            Lyric: {album.lyric}
+          </Typography>
         </Grid>
 
         {/* Right Column - Tracks & Additional Info */}
@@ -82,7 +92,7 @@ export const PageContainer = ({ album }: any) => {
 
           <Stack direction="row" justifyContent="flex-end" sx={{ mt: 3 }}>
             <Link
-              href={`https://new-apis-beryl.vercel.app/api/v1/download/${album.id}`}
+              href={isToken ? `https://new-apis-beryl.vercel.app/api/v1/download/${album.id}` : "#"}
               passHref
             >
               <Button

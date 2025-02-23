@@ -140,7 +140,8 @@ const SideBar = () => {
       <AppBar
         position="static"
         style={{
-          background: "linear-gradient(135deg, #ff7e5f, #feb47b)",
+          background: "white",
+          // background: "linear-gradient(135deg, #ff7e5f, #feb47b)",
           // background: "linear-gradient(to right, #80dde0, #92fcaf)",
           borderRadius: "5px",
         }}

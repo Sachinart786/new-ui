@@ -1,10 +1,7 @@
-// import Image from "next/image";
-// import styles from "./page.module.css";
-
-
+"use client";
 export default function Home() {
   return (
-    <div style={{ padding: "218px" }}>
+    <div style={{ padding: "164px" }}>
       <h1
         style={{
           textAlign: "center",
@@ -13,10 +10,25 @@ export default function Home() {
           backgroundClip: "text",
           WebkitBackgroundClip: "text",
           WebkitTextFillColor: "transparent",
+          animation: "moveUp 1s ease-out forwards",
         }}
       >
-        Welcome to Shubham Bar & Restaurant
+        Welcome to 90s Flac.in
+        <p>Download High Quality Free Lossless Audio Codec</p>
       </h1>
+
+      <style jsx>{`
+        @keyframes moveUp {
+          0% {
+            transform: translateY(100px); /* Start below the viewport */
+            opacity: 0;
+          }
+          100% {
+            transform: translateY(0); /* End at the top of the viewport */
+            opacity: 1;
+          }
+        }
+      `}</style>
     </div>
   );
 }
