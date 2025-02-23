@@ -29,7 +29,7 @@ export default function RootLayout({
     <html lang="en" className={`${poppins.variable}`}>
       <body>
         <SideBar />
-        <main style={{ padding: "18px" }}>{children}</main>
+        <main style={{ padding: "12px" }}>{children}</main>
       </body>
     </html>
   );

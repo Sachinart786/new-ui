@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import logo from "@/public/logo.png";
+import logo from "../../public/logo.png";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import { Box, IconButton } from "@mui/material";
 
@@ -9,14 +9,14 @@ const Sidebar = () => {
     <div
       style={{
         display: "flex",
-        padding: "4px",
+        padding: "8px",
         justifyContent: "space-between",
       }}
     >
       <Image
         src={logo}
         width={160}
-        height={48}
+        height={44}
         alt="logo"
         style={{ border: "none", background: "none" }}
       />
