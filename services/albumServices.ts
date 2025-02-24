@@ -19,3 +19,12 @@ export const viewAlbum = async (id: string) => {
     return error;
   }
 };
+
+export const searchAlbum = async (name: string) => {
+  try {
+    const res = await api.get(`/api/v1/albums/search/${name}`);
+    return res.data;
+  } catch (error) {
+    return error;
+  }
+};
