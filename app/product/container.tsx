@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Grid,
   Stack,
@@ -21,21 +21,53 @@ export const PageContainer = () => {
   const [loading, setLoading] = useState<boolean>(true);
 
   const itemsPerPage = 16;
+
+  // Function to check and retrieve cached data from localStorage
+  const getCachedAlbums = (page: number) => {
+    const cachedData = localStorage.getItem(`albums_page_${page}`);
+    if (cachedData) {
+      const parsedData = JSON.parse(cachedData);
+      setAlbums(parsedData.albums);
+      setTotalPages(parsedData.totalPages);
+      setLoading(false);
+      return true; // Indicating data is cached
+    }
+    return false;
+  };
+
+  // Function to fetch albums from the API
   const getProducts = async (page: number) => {
     try {
       const res = await getAlbums(page, itemsPerPage);
       if (get(res, "success", false)) {
         setLoading(false);
-        setAlbums(get(res, "data", []));
-        setTotalPages(get(res, "totalPages", ""));
+        const fetchedAlbums = get(res, "data", []);
+        const fetchedTotalPages = get(res, "totalPages", 0);
+
+        // Store the fetched data in localStorage
+        localStorage.setItem(
+          `albums_page_${page}`,
+          JSON.stringify({
+            albums: fetchedAlbums,
+            totalPages: fetchedTotalPages,
+          })
+        );
+
+        // Update state with fetched data
+        setAlbums(fetchedAlbums);
+        setTotalPages(fetchedTotalPages);
       }
     } catch (error) {
       console.log(error);
     }
   };
 
-  React.useEffect(() => {
-    getProducts(currentPage);
+  // Fetch data (with cache check) on page load or page change
+  useEffect(() => {
+    if (!getCachedAlbums(currentPage)) {
+      setLoading(true); // Ensure loading state is shown while fetching
+      getProducts(currentPage);
+    }
   }, [currentPage]);
 
   const handlePageChange = (
@@ -57,10 +89,7 @@ export const PageContainer = () => {
             <Grid container spacing={3}>
               {albums.map((item: any) => (
                 <Grid item xs={12} sm={6} md={4} lg={3} key={item._id}>
-                  <div
-                    onClick={() => router.push(`/product/${item._id}`)}
-                    style={{ cursor: "pointer" }}
-                  >
+                  <div onClick={() => router.push(`/product/${item._id}`)}>
                     <Box
                       sx={{
                         width: "100%",

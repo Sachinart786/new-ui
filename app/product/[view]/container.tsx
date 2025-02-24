@@ -3,19 +3,44 @@ import { Stack, Button, Typography, Box, Grid } from "@mui/material";
 import Link from "next/link";
 import React from "react";
 
-export const PageContainer = ({ isToken, album }: any) => {
+interface Track {
+  _id: string;
+  no: number;
+  title: string;
+  singers: string;
+}
+
+interface Album {
+  id: string;
+  image: string;
+  title: string;
+  year: string;
+  music: string;
+  lyric: string;
+  tracks: Track[];
+  playingTime: string;
+  totalSize: string;
+}
+
+interface PageContainerProps {
+  isToken: boolean;
+  album: Album;
+}
+
+const boldTextStyle = { fontWeight: "bold" };
+
+export const PageContainer: React.FC<PageContainerProps> = ({
+  isToken,
+  album,
+}) => {
   return (
     <Box>
       <Grid container spacing={8} alignItems="flex-start">
+        {/* Left Column - Album Image and Info */}
         <Grid item xs={12} sm={4} sx={{ textAlign: "center" }}>
-          <Box
-            sx={{
-              width: "100%",
-              height: "100%",
-            }}
-          >
+          <Box sx={{ width: "100%", height: "100%" }}>
             <img
-              src={album.image}
+              src={album.image || "/default-image.jpg"} // Fallback for missing image
               alt={album.title}
               style={{
                 width: "100%",
@@ -28,19 +53,19 @@ export const PageContainer = ({ isToken, album }: any) => {
           </Box>
           <Typography
             variant="body2"
-            sx={{ fontSize: "18px", fontWeight: "bold", mt: 1 }}
+            sx={{ ...boldTextStyle, fontSize: "18px", mt: 1 }}
           >
             {album.title} - {album.year}
           </Typography>
           <Typography
             variant="body1"
-            sx={{ fontSize: "16px", fontWeight: "bold" }}
+            sx={{ ...boldTextStyle, fontSize: "16px" }}
           >
             Music: {album.music}
           </Typography>
           <Typography
             variant="body1"
-            sx={{ fontSize: "16px", fontWeight: "bold" }}
+            sx={{ ...boldTextStyle, fontSize: "16px" }}
           >
             Lyric: {album.lyric}
           </Typography>
@@ -51,48 +76,46 @@ export const PageContainer = ({ isToken, album }: any) => {
           <Typography
             variant="body1"
             color="#323c64"
-            sx={{ fontSize: "18px", fontWeight: "bold", mb: 1.5 }}
+            sx={{ fontSize: "18px", ...boldTextStyle, mb: 1.5 }}
           >
             Tracklist
           </Typography>
           <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
-            {album.tracks.map((track: any) => {
-              return (
-                <Box key={track._id} sx={{ display: "flex", gap: 2 }}>
-                  <Typography variant="body2" sx={{ fontWeight: "bold" }}>
-                    {track.no}.
-                  </Typography>
-                  <Typography
-                    variant="body2"
-                    color="#323c64"
-                    sx={{ fontWeight: "bold" }}
-                  >
-                    {track.title}
-                  </Typography>
-                  <Typography variant="body2" color="#7681ab">
-                    {track.singers}
-                  </Typography>
-                </Box>
-              );
-            })}
+            {album.tracks.map((track) => (
+              <Box key={track._id} sx={{ display: "flex", gap: 2 }}>
+                <Typography variant="body2" sx={boldTextStyle}>
+                  {track.no}.
+                </Typography>
+                <Typography variant="body2" color="#323c64" sx={boldTextStyle}>
+                  {track.title}
+                </Typography>
+                <Typography variant="body2" color="#7681ab">
+                  {track.singers}
+                </Typography>
+              </Box>
+            ))}
           </Box>
 
           <Typography
             variant="body2"
-            sx={{ fontSize: "14px", fontWeight: "bold", mt: 4 }}
+            sx={{ fontSize: "14px", ...boldTextStyle, mt: 4 }}
           >
             Playing Time: {album.playingTime}
           </Typography>
           <Typography
             variant="body2"
-            sx={{ fontSize: "14px", fontWeight: "bold", mt: 1 }}
+            sx={{ fontSize: "14px", ...boldTextStyle, mt: 1 }}
           >
             Total Size: {album.totalSize} MB
           </Typography>
 
           <Stack direction="row" justifyContent="flex-end" sx={{ mt: 3 }}>
             <Link
-              href={isToken ? `https://new-apis-beryl.vercel.app/api/v1/download/${album.id}` : "#"}
+              href={
+                isToken
+                  ? `https://new-apis-beryl.vercel.app/api/v1/download/${album.id}`
+                  : "#"
+              }
               passHref
             >
               <Button
@@ -102,6 +125,7 @@ export const PageContainer = ({ isToken, album }: any) => {
                   background:
                     "linear-gradient(180deg,rgb(31, 228, 175), #6ee6b4)",
                 }}
+                disabled={!isToken} // Disable if no token
               >
                 Download
               </Button>

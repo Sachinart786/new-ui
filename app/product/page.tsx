@@ -1,7 +1,7 @@
 import { PageContainer } from "./container";
 
-const LoginPage = () => {
+const AlbumPage = () => {
   return <PageContainer />;
 };
 
-export default LoginPage;
+export default AlbumPage;

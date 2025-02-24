@@ -2,15 +2,16 @@ import { viewAlbum } from "@/services/albumServices";
 import { PageContainer } from "./container";
 import { getCookie } from "cookies-next";
 import { cookies } from "next/headers";
+import { get } from "lodash";
 
-const LoginPage = async ({ params }: any) => {
+const View = async ({ params }: any) => {
   const { view } = await params;
   const res = await viewAlbum(view);
 
-  const  isToken: any = getCookie("token", {
+  const isToken: any = getCookie("token", {
     cookies,
   });
-  return <PageContainer isToken={isToken} album={res.data} />;
+  return <PageContainer isToken={isToken} album={get(res, "data", [])} />;
 };
 
-export default LoginPage;
+export default View;
