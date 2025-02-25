@@ -1,48 +1,14 @@
 "use client";
-import React, { useState, useEffect } from "react";
-import {
-  Grid,
-  Card,
-  CardContent,
-  TextField,
-  Button,
-  Alert,
-  Typography,
-} from "@mui/material";
-// import axios from 'axios'
-import Link from "next/link";
+import React from "react";
+import { Grid, Card, Button, Typography } from "@mui/material";
+import { useRouter } from "next/navigation";
 
 export const Registration = () => {
-  const [msg, setMsg] = useState("");
-  const [show, setShow] = useState(false);
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const router = useRouter();
 
-  const handleClick = async () => {
-    // const payload = {
-    //     name,
-    //     email,
-    //     password
-    // }
-    // const result = await axios.post("http://localhost:1010/register", payload);
-    // setMsg(result.data)
-    // setName("");
-    // setEmail("");
-    // setPassword("");
+  const handleClick = () => {
+    router.push("/register/signup");
   };
-
-  useEffect(() => {
-    if (msg !== "") {
-      setShow(true);
-      setTimeout(() => {
-        setShow(false);
-        setMsg("");
-      }, 5000);
-    } else {
-      setShow(false);
-    }
-  }, [msg]);
   return (
     <React.Fragment>
       <Grid container spacing={3} justifyContent="center" mt={10}>
@@ -88,7 +54,12 @@ export const Registration = () => {
               Access all content to site.
             </Typography>
 
-            <Button variant="contained" color="primary" fullWidth>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={handleClick}
+              fullWidth
+            >
               Choose Plan
             </Button>
           </Card>
@@ -123,7 +94,12 @@ export const Registration = () => {
             <Typography variant="body2" color="textSecondary" mb={2}>
               Access all content to site.
             </Typography>
-            <Button variant="contained" color="primary" fullWidth>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={handleClick}
+              fullWidth
+            >
               Choose Plan
             </Button>
           </Card>
@@ -158,7 +134,12 @@ export const Registration = () => {
             <Typography variant="body2" color="textSecondary" mb={2}>
               Access all content to site.
             </Typography>
-            <Button variant="contained" color="primary" fullWidth>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={handleClick}
+              fullWidth
+            >
               Choose Plan
             </Button>
           </Card>
@@ -193,86 +174,16 @@ export const Registration = () => {
             <Typography variant="body2" color="textSecondary" mb={2}>
               Access all content to site.
             </Typography>
-            <Button variant="contained" color="primary" fullWidth>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={handleClick}
+              fullWidth
+            >
               Choose Plan
             </Button>
           </Card>
         </Grid>
-      </Grid>
-
-      <Card
-        style={{
-          width: "500px",
-          height: "460px",
-          padding: "24px",
-          backgroundColor: "#d8ffff",
-          borderRadius: "5px",
-          marginLeft: "35%",
-          marginTop: "160px",
-        }}
-      >
-        <CardContent>
-          <Grid container spacing={3}>
-            <Grid item xs={12}>
-              <h2 style={{ textAlign: "center" }}>Registration</h2>
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="filled"
-                size="small"
-                label="Enter Your Name"
-                type="text"
-                value={name}
-                fullWidth
-                onChange={(e) => setName(e.target.value)}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="filled"
-                size="small"
-                label="Enter Your Email"
-                type="text"
-                value={email}
-                fullWidth
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="filled"
-                size="small"
-                label="Enter Your Password"
-                type="password"
-                value={password}
-                fullWidth
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <Button variant="contained" fullWidth onClick={handleClick}>
-                Sign Up
-              </Button>
-            </Grid>
-
-            <Grid item xs={12}>
-              <p style={{ textAlign: "center" }}>
-                Already have an account ?{" "}
-                <b>
-                  <Link href="/login" style={{ textDecoration: "none" }}>
-                    Login
-                  </Link>
-                </b>
-              </p>
-            </Grid>
-            {/* <Grid item xs={12}>
-                { show && <Alert severity="success">{msg}</Alert> } 
-            </Grid> */}
-          </Grid>
-        </CardContent>
-      </Card>
-      <Grid item xs={12}>
-        {show && <Alert severity="success">{msg}</Alert>}
       </Grid>
     </React.Fragment>
   );
