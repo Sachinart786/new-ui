@@ -59,7 +59,7 @@ export const PageContainer = () => {
         <CardContent>
           <Grid container spacing={3}>
             <Grid item xs={12}>
-              <h2 style={{ textAlign: "center" }}>Membershi</h2>
+              <h2 style={{ textAlign: "center" }}>Membership Checkout</h2>
             </Grid>
             <Grid item xs={12}>
               <TextField
