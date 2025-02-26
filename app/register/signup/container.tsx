@@ -50,7 +50,7 @@ export const PageContainer = () => {
           // width: "500px",
           // height: "460px",
           padding: "24px",
-          backgroundColor: "#d8ffff",
+          backgroundColor: "#fdfefe",
           borderRadius: "5px",
           // marginLeft: "35%",
           // marginTop: "160px",

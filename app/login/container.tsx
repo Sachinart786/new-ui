@@ -42,20 +42,12 @@ export const LoginContainer = () => {
   };
 
   return (
-    <div
-      style={{
-        background: "linear-gradient(to right, #80dde0, #92fcaf)",
-        height: "100vh",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
+    <div>
       <Card
         style={{
-          width: "340px",
           padding: "15px",
           borderRadius: "5px",
+          backgroundColor: "#fdfefe",
         }}
       >
         <CardContent>
@@ -65,7 +57,7 @@ export const LoginContainer = () => {
             </Grid>
             <Grid item xs={12}>
               <TextField
-                variant="filled"
+                variant="outlined"
                 size="small"
                 label="Enter Your Email"
                 type="text"
@@ -78,7 +70,7 @@ export const LoginContainer = () => {
             </Grid>
             <Grid item xs={12}>
               <TextField
-                variant="filled"
+                variant="outlined"
                 size="small"
                 label="Enter Your Password"
                 type="password"
@@ -102,12 +94,9 @@ export const LoginContainer = () => {
                   "Login"
                 )}
               </Button>
-              {/* <Button loading={loading} onClick={handleClick} variant="solid" size="lg" fullWidth>
-              Login
-              </Button> */}
             </Grid>
             <Grid item xs={12}>
-              <p style={{ textAlign: "center" }}>
+              <p>
                 Don’t have an account?{" "}
                 <b>
                   <Link href="register" style={{ textDecoration: "none" }}>

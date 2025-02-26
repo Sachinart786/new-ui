@@ -10,7 +10,7 @@ export const Registration = () => {
     router.push("/register/signup");
   };
   return (
-    <React.Fragment>
+    <div>
       <Grid container spacing={3} justifyContent="center" mt={10}>
         <Grid item xs={12}>
           <Typography
@@ -23,21 +23,20 @@ export const Registration = () => {
           </Typography>
         </Grid>
 
-        {/* Card for Plan 1: ₹599 for 1 month */}
         <Grid item xs={12} sm={6} md={3} display="flex" justifyContent="center">
           <Card
             sx={{
               width: "100%",
               padding: "24px",
-              backgroundColor: "#f4f7f6", // Soft background color
-              borderRadius: "12px", // Rounded corners
+              backgroundColor: "#f4f7f6",
+              borderRadius: "12px",
               textAlign: "center",
-              boxShadow: 3, // Subtle shadow for depth
+              boxShadow: 3,
               "&:hover": {
-                transform: "scale(1.05)", // Slight zoom effect on hover
-                boxShadow: 6, // More prominent shadow on hover
+                transform: "scale(1.05)",
+                boxShadow: 6,
               },
-              transition: "all 0.3s ease", // Smooth transition
+              transition: "all 0.3s ease",
             }}
           >
             <Typography variant="h5" color="primary" fontWeight="bold">
@@ -65,7 +64,6 @@ export const Registration = () => {
           </Card>
         </Grid>
 
-        {/* Card for Plan 2: ₹1599 for 3 months */}
         <Grid item xs={12} sm={6} md={3} display="flex" justifyContent="center">
           <Card
             sx={{
@@ -105,7 +103,6 @@ export const Registration = () => {
           </Card>
         </Grid>
 
-        {/* Card for Plan 3: ₹2599 for 6 months */}
         <Grid item xs={12} sm={6} md={3} display="flex" justifyContent="center">
           <Card
             sx={{
@@ -145,7 +142,6 @@ export const Registration = () => {
           </Card>
         </Grid>
 
-        {/* Card for Plan 4: ₹4999 for 1 Year */}
         <Grid item xs={12} sm={6} md={3} display="flex" justifyContent="center">
           <Card
             sx={{
@@ -185,6 +181,6 @@ export const Registration = () => {
           </Card>
         </Grid>
       </Grid>
-    </React.Fragment>
+    </div>
   );
 };
