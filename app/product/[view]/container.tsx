@@ -236,7 +236,7 @@ export const PageContainer: React.FC<PageContainerProps> = ({
                   color="#323c64"
                   sx={{
                     ...boldTextStyle,
-                    fontSize: { xs: "12px", sm: "15px" }, // Responsive font size
+                    fontSize: { xs: "13px", sm: "15px" }, // Responsive font size
                     flexGrow: 1, // Ensures title takes up available space
                   }}
                 >
