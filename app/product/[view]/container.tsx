@@ -224,8 +224,8 @@ export const PageContainer: React.FC<PageContainerProps> = ({
                 key={track._id}
                 sx={{
                   display: "flex",
-                  gap: 2,
-                  alignItems: "center", // Ensures both title and singer align on the same line
+                  gap: 0.8,
+                  alignItems: "center",
                 }}
               >
                 <Typography variant="body2" sx={boldTextStyle}>
@@ -236,8 +236,8 @@ export const PageContainer: React.FC<PageContainerProps> = ({
                   color="#323c64"
                   sx={{
                     ...boldTextStyle,
-                    fontSize: { xs: "13px", sm: "15px" }, // Responsive font size
-                    flexGrow: 1, // Ensures title takes up available space
+                    fontSize: { xs: "12px", sm: "14px" },
+                    flexGrow: 1,
                   }}
                 >
                   {track.title}
@@ -246,7 +246,7 @@ export const PageContainer: React.FC<PageContainerProps> = ({
                   variant="body2"
                   color="#7681ab"
                   sx={{
-                    fontSize: { xs: "12px", sm: "14px" }, // Smaller font size for mobile
+                    fontSize: { xs: "10px", sm: "12px" },
                   }}
                 >
                   {track.singers}
@@ -284,7 +284,7 @@ export const PageContainer: React.FC<PageContainerProps> = ({
                   background:
                     "linear-gradient(180deg,rgb(31, 228, 175), #6ee6b4)",
                 }}
-                disabled={!isToken} // Disable if no token
+                disabled={!isToken}
               >
                 Download
               </Button>
