@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import logo from "../../public/logo.png";
 import AccountCircle from "@mui/icons-material/AccountCircle";
-import { Box, Button, IconButton, Menu, MenuItem } from "@mui/material";
+import { Box, IconButton, Menu, MenuItem } from "@mui/material";
 import { searchAlbum } from "@/services/albumServices";
 
 const Sidebar = () => {
@@ -38,6 +38,7 @@ const Sidebar = () => {
         height={44}
         alt="logo"
         style={{ border: "none", background: "none" }}
+        // onClick={() => console.log("Logo Clicked")}
       />
 
       {/* <input
