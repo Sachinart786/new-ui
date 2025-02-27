@@ -41,7 +41,6 @@ const Sidebar = () => {
         alignItems: "center",
       }}
     >
-      {/* Logo */}
       <Image
         src={logo}
         width={160}
@@ -50,8 +49,7 @@ const Sidebar = () => {
         style={{ border: "none", background: "none" }}
       />
 
-      {/* Account Circle Icon */}
-      <Box sx={{ display: { xs: "none", md: "flex" } }}>
+      <Box>
         <IconButton
           size="large"
           edge="end"
@@ -76,7 +74,6 @@ const Sidebar = () => {
           }}
         >
           <MenuItem
-            onClick={handleMenuClose}
             sx={{
               display: "flex",
               alignItems: "center",
@@ -103,14 +100,13 @@ const Sidebar = () => {
 
           <Divider sx={{ margin: "8px 0" }} />
 
-          {/* Menu Items */}
           <Typography
             variant="body1"
             sx={{
               fontWeight: "bold",
               color: "#00796b",
               marginBottom: 1,
-              marginLeft: 1,
+              marginLeft: 2,
             }}
           >
             Menu
@@ -125,7 +121,18 @@ const Sidebar = () => {
               },
             }}
           >
-            Profile
+            Music
+          </MenuItem>
+          <MenuItem
+            onClick={handleMenuClose}
+            sx={{
+              paddingLeft: "32px",
+              "&:hover": {
+                backgroundColor: "#e0f2f1",
+              },
+            }}
+          >
+            Account
           </MenuItem>
           <MenuItem
             onClick={handleMenuClose}
