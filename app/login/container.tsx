@@ -1,6 +1,13 @@
 "use client";
 import React, { useState } from "react";
-import { Grid, Card, CardContent, TextField, Button } from "@mui/material";
+import {
+  Grid,
+  Card,
+  CardContent,
+  TextField,
+  Button,
+  Typography,
+} from "@mui/material";
 import CircularProgress from "@mui/joy/CircularProgress";
 import { Login } from "@/services/authServices";
 import { setCookie } from "cookies-next";
@@ -96,14 +103,22 @@ export const LoginContainer = () => {
               </Button>
             </Grid>
             <Grid item xs={12}>
-              <p>
+              <Typography
+                variant="body2"
+                color="#7681ab"
+                sx={{
+                  fontSize: "14px",
+                  fontWeight: "bold",
+                }}
+              >
                 Don’t have an account?{" "}
-                <b>
-                  <Link href="register" style={{ textDecoration: "none" }}>
-                    Sign Up
-                  </Link>
-                </b>
-              </p>
+                <Link
+                  href="/register"
+                  style={{ textDecoration: "none", color: "blue" }}
+                >
+                  Sign Up
+                </Link>
+              </Typography>
             </Grid>
           </Grid>
         </CardContent>
