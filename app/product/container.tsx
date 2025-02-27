@@ -89,12 +89,15 @@ export const PageContainer = () => {
             <Grid container spacing={3}>
               {albums.map((item: any) => (
                 <Grid item xs={12} sm={6} md={4} lg={3} key={item._id}>
-                  <div onClick={() => router.push(`/product/${item._id}`)}>
+                  <div
+                    onClick={() => router.push(`/product/${item._id}`)}
+                    style={{ cursor: "pointer" }}
+                  >
                     <Box
                       sx={{
                         width: "100%",
-                        height: 0, // Set height to 0 initially
-                        paddingBottom: "100%", // Create a square container using padding-bottom
+                        height: 0,
+                        paddingBottom: "100%",
                         position: "relative",
                         borderRadius: "5px",
                         overflow: "hidden",
@@ -103,7 +106,7 @@ export const PageContainer = () => {
                           "transform 0.3s ease, background-color 0.3s ease",
                         "&:hover": {
                           backgroundColor: "rgba(194, 188, 188, 0.1)",
-                          transform: "scale(1.05)",
+                          // transform: "scale(1.05)",
                         },
                       }}
                     >
@@ -111,13 +114,13 @@ export const PageContainer = () => {
                         src={item.image}
                         alt={item.title}
                         style={{
-                          position: "absolute", // Position the image inside the square Box
+                          position: "absolute",
                           top: "50%",
                           left: "50%",
                           transform: "translate(-50%, -50%)",
                           width: "100%",
                           height: "100%",
-                          objectFit: "contain", // Ensures image fits inside the square without cropping
+                          objectFit: "contain",
                         }}
                         loading="lazy"
                       />
@@ -129,7 +132,7 @@ export const PageContainer = () => {
                       sx={{
                         textAlign: "center",
                         mt: 1,
-                        fontSize: { xs: "14px", sm: "16px", md: "16px" },
+                        fontSize: { xs: "18px", sm: "18px", md: "18px" },
                         fontWeight: "bold",
                       }}
                     >
