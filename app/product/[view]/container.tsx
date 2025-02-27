@@ -137,7 +137,7 @@ export const PageContainer: React.FC<PageContainerProps> = ({
             sx={{
               fontSize: "14px",
               ...boldTextStyle,
-              mt: { xs: 2, sm: 4 },
+              mt: { xs: 1, sm: 4 },
             }}
           >
             Playing Time: {album.playingTime}
@@ -156,7 +156,7 @@ export const PageContainer: React.FC<PageContainerProps> = ({
           <Stack
             direction="row"
             justifyContent="flex-end"
-            sx={{ mt: { xs: 2, sm: 3 } }}
+            sx={{ mt: { xs: 1, sm: 3 } }}
           >
             <Link
               href={
