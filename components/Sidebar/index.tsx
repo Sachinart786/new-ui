@@ -41,7 +41,7 @@ const Sidebar = () => {
         // onClick={() => console.log("Logo Clicked")}
       />
 
-      <input
+      {/* <input
         placeholder="Search..."
         type="text"
         value={name}
@@ -50,7 +50,7 @@ const Sidebar = () => {
 
       <Button variant="outlined" color="primary" onClick={handleSearch}>
         Search
-      </Button>
+      </Button> */}
 
       {/* Account Circle Icon */}
       <Box sx={{ display: { xs: "none", md: "flex" } }}>
