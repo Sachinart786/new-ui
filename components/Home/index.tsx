@@ -56,6 +56,10 @@ const HomeContainer = () => {
     }
   };
 
+  const handleView = (id: string) => {
+    router.push(`/album/${id}`);
+  };
+
   useEffect(() => {
     if (!getCachedAlbums(currentPage)) {
       setLoading(true);
@@ -83,7 +87,7 @@ const HomeContainer = () => {
               {albums.map((item: any) => (
                 <Grid item xs={12} sm={6} md={4} lg={3} key={item._id}>
                   <div
-                    onClick={() => router.push(`/album/${item._id}`)}
+                    onClick={() => handleView(item._id)}
                     style={{ cursor: "pointer" }}
                   >
                     <Box

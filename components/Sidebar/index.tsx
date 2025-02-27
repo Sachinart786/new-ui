@@ -14,6 +14,15 @@ import {
 } from "@mui/material";
 import { searchAlbum } from "@/services/albumServices";
 
+const menuStyle = {
+  paddingLeft: "18px",
+  "&:hover": {
+    backgroundColor: "#e0f2f1",
+  },
+  fontSize: "13px",
+  fontWeight: "bold",
+};
+
 const Sidebar = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [name, setName] = useState<string>("");
@@ -34,8 +43,6 @@ const Sidebar = () => {
     <div
       style={{
         display: "flex",
-        position: "relative",
-        top: 0,
         padding: "8px",
         justifyContent: "space-between",
         alignItems: "center",
@@ -67,7 +74,7 @@ const Sidebar = () => {
           onClose={handleMenuClose}
           sx={{
             "& .MuiMenu-paper": {
-              borderRadius: "8px",
+              borderRadius: "5px",
               padding: "16px",
               minWidth: "250px",
             },
@@ -88,13 +95,13 @@ const Sidebar = () => {
               onChange={(e) => setName(e.target.value)}
               sx={{
                 flexGrow: 1,
-                backgroundColor: "#f9f9f9",
+                backgroundColor: "#e0f2f1",
                 borderRadius: "8px",
                 marginRight: 1,
               }}
             />
-            <IconButton color="info" onClick={handleSearch}>
-              <SearchOutlinedIcon />
+            <IconButton onClick={handleSearch}>
+              <SearchOutlinedIcon sx={{ color: "#00796b" }} />
             </IconButton>
           </MenuItem>
 
@@ -105,14 +112,14 @@ const Sidebar = () => {
             sx={{
               fontWeight: "bold",
               color: "#00796b",
-              marginBottom: 1,
+              marginBottom: 0.5,
               marginLeft: 2,
             }}
           >
             Menu
           </Typography>
 
-          <MenuItem
+          {/* <MenuItem
             onClick={handleMenuClose}
             sx={{
               paddingLeft: "32px",
@@ -121,29 +128,16 @@ const Sidebar = () => {
               },
             }}
           >
-            Music
+            Music Director
+          </MenuItem> */}
+          <MenuItem onClick={handleMenuClose} sx={menuStyle}>
+            REGISTER
           </MenuItem>
-          <MenuItem
-            onClick={handleMenuClose}
-            sx={{
-              paddingLeft: "32px",
-              "&:hover": {
-                backgroundColor: "#e0f2f1",
-              },
-            }}
-          >
-            Account
+          <MenuItem onClick={handleMenuClose} sx={menuStyle}>
+            ACCOUNT
           </MenuItem>
-          <MenuItem
-            onClick={handleMenuClose}
-            sx={{
-              paddingLeft: "32px",
-              "&:hover": {
-                backgroundColor: "#e0f2f1",
-              },
-            }}
-          >
-            Logout
+          <MenuItem onClick={handleMenuClose} sx={menuStyle}>
+            LOGOUT
           </MenuItem>
         </Menu>
       </Box>
