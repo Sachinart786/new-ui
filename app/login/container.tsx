@@ -50,79 +50,65 @@ export const LoginContainer = () => {
 
   return (
     <div>
-      <Card
-        style={{
-          padding: "15px",
-          borderRadius: "5px",
-          backgroundColor: "#fdfefe",
-        }}
-      >
-        <CardContent>
-          <Grid container spacing={3}>
-            <Grid item xs={12}>
-              <h2 style={{ textAlign: "center" }}>Login</h2>
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                size="small"
-                label="Enter Your Email"
-                type="text"
-                value={email}
-                fullWidth
-                onChange={(e) => setEmail(e.target.value)}
-                autoFocus
-                aria-label="Email address"
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                size="small"
-                label="Enter Your Password"
-                type="password"
-                value={password}
-                fullWidth
-                onChange={(e) => setPassword(e.target.value)}
-                aria-label="Password"
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <Button
-                variant="contained"
-                size="medium"
-                fullWidth
-                onClick={handleClick}
-                disabled={loading}
-              >
-                {loading ? (
-                  <CircularProgress size="sm" variant="solid" />
-                ) : (
-                  "Login"
-                )}
-              </Button>
-            </Grid>
-            <Grid item xs={12}>
-              <Typography
-                variant="body2"
-                color="#7681ab"
-                sx={{
-                  fontSize: "14px",
-                  fontWeight: "bold",
-                }}
-              >
-                Don’t have an account?{" "}
-                <Link
-                  href="/register"
-                  style={{ textDecoration: "none", color: "blue" }}
-                >
-                  Sign Up
-                </Link>
-              </Typography>
-            </Grid>
-          </Grid>
-        </CardContent>
-      </Card>
+      <Grid container spacing={3} mt={12}>
+        <Grid item xs={12}>
+          <h2 style={{ textAlign: "center" }}>Login</h2>
+        </Grid>
+        <Grid item xs={12}>
+          <TextField
+            variant="outlined"
+            size="small"
+            label="Enter Your Email"
+            type="text"
+            value={email}
+            fullWidth
+            onChange={(e) => setEmail(e.target.value)}
+            autoFocus
+            aria-label="Email address"
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <TextField
+            variant="outlined"
+            size="small"
+            label="Enter Your Password"
+            type="password"
+            value={password}
+            fullWidth
+            onChange={(e) => setPassword(e.target.value)}
+            aria-label="Password"
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <Button
+            variant="contained"
+            size="medium"
+            fullWidth
+            onClick={handleClick}
+            disabled={loading}
+          >
+            {loading ? <CircularProgress size="sm" variant="solid" /> : "Login"}
+          </Button>
+        </Grid>
+        <Grid item xs={12}>
+          <Typography
+            variant="body2"
+            color="#7681ab"
+            sx={{
+              fontSize: "14px",
+              fontWeight: "bold",
+            }}
+          >
+            Don’t have an account?{" "}
+            <Link
+              href="/register"
+              style={{ textDecoration: "none", color: "blue" }}
+            >
+              Sign Up
+            </Link>
+          </Typography>
+        </Grid>
+      </Grid>
     </div>
   );
 };

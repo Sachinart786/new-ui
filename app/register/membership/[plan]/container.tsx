@@ -53,84 +53,76 @@ export const PageContainer = ({ price }: any) => {
 
   return (
     <div>
-      <Card
-        sx={{
-          padding: "24px",
-          backgroundColor: "#fdfefe",
-          borderRadius: "5px",
-        }}
-      >
-        <Grid container spacing={3}>
-          <Grid item xs={12}>
-            <h2 style={{ textAlign: "center" }}>Get Your Membership</h2>
-          </Grid>
-          <Grid item xs={12}>
-            <TextField
-              variant="outlined"
-              size="small"
-              label="Enter Your Name"
-              type="text"
-              value={name}
-              fullWidth
-              onChange={(e) => setName(e.target.value)}
-              error={Boolean(error.name)}
-              helperText={error.name}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <TextField
-              variant="outlined"
-              size="small"
-              label="Enter Your Email"
-              type="text"
-              value={email}
-              fullWidth
-              onChange={(e) => setEmail(e.target.value)}
-              error={Boolean(error.email)}
-              helperText={error.email}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <TextField
-              variant="outlined"
-              size="small"
-              label="Your Plan"
-              type="text"
-              value={price}
-              disabled
-              fullWidth
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <Button
-              variant="contained"
-              color="success"
-              fullWidth
-              onClick={handleClick}
-            >
-              Submit & Checkout
-            </Button>
-          </Grid>
-          <Grid item xs={12}>
-            <Typography
-              variant="body2"
-              color="#7681ab"
-              sx={{
-                fontSize: "14px",
-                fontWeight: "bold",
-              }}
-            >
-              Already have an account ?{" "}
-              <Link
-                href="/login"
-                style={{ textDecoration: "none", color: "blue" }}
-              >
-                Login
-              </Link>
-            </Typography>
-          </Grid>
+      <Grid container spacing={3} mt={12}>
+        <Grid item xs={12}>
+          <h2 style={{ textAlign: "center" }}>Get Your Membership</h2>
         </Grid>
-      </Card>
+        <Grid item xs={12}>
+          <TextField
+            variant="outlined"
+            size="small"
+            label="Enter Your Name"
+            type="text"
+            value={name}
+            fullWidth
+            onChange={(e) => setName(e.target.value)}
+            error={Boolean(error.name)}
+            helperText={error.name}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <TextField
+            variant="outlined"
+            size="small"
+            label="Enter Your Email"
+            type="text"
+            value={email}
+            fullWidth
+            onChange={(e) => setEmail(e.target.value)}
+            error={Boolean(error.email)}
+            helperText={error.email}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <TextField
+            variant="outlined"
+            size="small"
+            label="Your Plan"
+            type="text"
+            value={price}
+            disabled
+            fullWidth
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <Button
+            variant="contained"
+            color="success"
+            fullWidth
+            onClick={handleClick}
+          >
+            Submit & Checkout
+          </Button>
+        </Grid>
+        <Grid item xs={12}>
+          <Typography
+            variant="body2"
+            color="#7681ab"
+            sx={{
+              fontSize: "14px",
+              fontWeight: "bold",
+            }}
+          >
+            Already have an account ?{" "}
+            <Link
+              href="/login"
+              style={{ textDecoration: "none", color: "blue" }}
+            >
+              Login
+            </Link>
+          </Typography>
+        </Grid>
+      </Grid>
     </div>
   );
 };

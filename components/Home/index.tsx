@@ -13,7 +13,7 @@ import { get } from "lodash";
 import { getAlbums } from "@/services/albumServices";
 import { useRouter } from "next/navigation";
 
-export const PageContainer = () => {
+const HomeContainer = () => {
   const router = useRouter();
   const [albums, setAlbums] = useState<[]>([]);
   const [totalPages, setTotalPages] = useState<number>(0);
@@ -22,7 +22,6 @@ export const PageContainer = () => {
 
   const itemsPerPage = 16;
 
-  // Function to check and retrieve cached data from localStorage
   const getCachedAlbums = (page: number) => {
     const cachedData = localStorage.getItem(`albums_page_${page}`);
     if (cachedData) {
@@ -30,12 +29,11 @@ export const PageContainer = () => {
       setAlbums(parsedData.albums);
       setTotalPages(parsedData.totalPages);
       setLoading(false);
-      return true; // Indicating data is cached
+      return true;
     }
     return false;
   };
 
-  // Function to fetch albums from the API
   const getProducts = async (page: number) => {
     try {
       const res = await getAlbums(page, itemsPerPage);
@@ -43,8 +41,6 @@ export const PageContainer = () => {
         setLoading(false);
         const fetchedAlbums = get(res, "data", []);
         const fetchedTotalPages = get(res, "totalPages", 0);
-
-        // Store the fetched data in localStorage
         localStorage.setItem(
           `albums_page_${page}`,
           JSON.stringify({
@@ -52,8 +48,6 @@ export const PageContainer = () => {
             totalPages: fetchedTotalPages,
           })
         );
-
-        // Update state with fetched data
         setAlbums(fetchedAlbums);
         setTotalPages(fetchedTotalPages);
       }
@@ -62,10 +56,9 @@ export const PageContainer = () => {
     }
   };
 
-  // Fetch data (with cache check) on page load or page change
   useEffect(() => {
     if (!getCachedAlbums(currentPage)) {
-      setLoading(true); // Ensure loading state is shown while fetching
+      setLoading(true);
       getProducts(currentPage);
     }
   }, [currentPage]);
@@ -90,7 +83,7 @@ export const PageContainer = () => {
               {albums.map((item: any) => (
                 <Grid item xs={12} sm={6} md={4} lg={3} key={item._id}>
                   <div
-                    onClick={() => router.push(`/product/${item._id}`)}
+                    onClick={() => router.push(`/album/${item._id}`)}
                     style={{ cursor: "pointer" }}
                   >
                     <Box
@@ -166,3 +159,5 @@ export const PageContainer = () => {
     </div>
   );
 };
+
+export default HomeContainer;

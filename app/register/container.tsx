@@ -11,7 +11,7 @@ export const Registration = () => {
   };
   return (
     <div>
-      <Grid container spacing={3} justifyContent="center" mt={10}>
+      <Grid container spacing={3} justifyContent="center" mt={{ sm: 5, md: 10 }}>
         <Grid item xs={12}>
           <Typography
             variant="h5"

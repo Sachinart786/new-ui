@@ -1,8 +1,17 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import logo from "../../public/logo.png";
-import AccountCircle from "@mui/icons-material/AccountCircle";
-import { Box, Button, IconButton, Menu, MenuItem } from "@mui/material";
+import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
+import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
+import {
+  Box,
+  Divider,
+  IconButton,
+  Menu,
+  MenuItem,
+  TextField,
+  Typography,
+} from "@mui/material";
 import { searchAlbum } from "@/services/albumServices";
 
 const Sidebar = () => {
@@ -19,13 +28,14 @@ const Sidebar = () => {
 
   const handleSearch = async () => {
     const res = await searchAlbum(name);
-    console.log(res);
   };
 
   return (
     <div
       style={{
         display: "flex",
+        position: "relative",
+        top: 0,
         padding: "8px",
         justifyContent: "space-between",
         alignItems: "center",
@@ -38,19 +48,7 @@ const Sidebar = () => {
         height={44}
         alt="logo"
         style={{ border: "none", background: "none" }}
-        // onClick={() => console.log("Logo Clicked")}
       />
-
-      {/* <input
-        placeholder="Search..."
-        type="text"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
-
-      <Button variant="outlined" color="primary" onClick={handleSearch}>
-        Search
-      </Button> */}
 
       {/* Account Circle Icon */}
       <Box sx={{ display: { xs: "none", md: "flex" } }}>
@@ -60,19 +58,86 @@ const Sidebar = () => {
           aria-label="account of current user"
           aria-haspopup="true"
           onClick={handleMenuClick}
-          color="inherit"
+          color="info"
         >
-          <AccountCircle />
+          <MenuRoundedIcon />
         </IconButton>
 
-        {/* Dropdown Menu */}
         <Menu
           anchorEl={anchorEl}
           open={Boolean(anchorEl)}
           onClose={handleMenuClose}
+          sx={{
+            "& .MuiMenu-paper": {
+              borderRadius: "8px",
+              padding: "16px",
+              minWidth: "250px",
+            },
+          }}
         >
-          <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-          <MenuItem onClick={handleMenuClose}>Logout</MenuItem>
+          <MenuItem
+            onClick={handleMenuClose}
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
+          >
+            <TextField
+              variant="outlined"
+              size="small"
+              placeholder="Search..."
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              sx={{
+                flexGrow: 1,
+                backgroundColor: "#f9f9f9",
+                borderRadius: "8px",
+                marginRight: 1,
+              }}
+            />
+            <IconButton color="info" onClick={handleSearch}>
+              <SearchOutlinedIcon />
+            </IconButton>
+          </MenuItem>
+
+          <Divider sx={{ margin: "8px 0" }} />
+
+          {/* Menu Items */}
+          <Typography
+            variant="body1"
+            sx={{
+              fontWeight: "bold",
+              color: "#00796b",
+              marginBottom: 1,
+              marginLeft: 1,
+            }}
+          >
+            Menu
+          </Typography>
+
+          <MenuItem
+            onClick={handleMenuClose}
+            sx={{
+              paddingLeft: "32px",
+              "&:hover": {
+                backgroundColor: "#e0f2f1",
+              },
+            }}
+          >
+            Profile
+          </MenuItem>
+          <MenuItem
+            onClick={handleMenuClose}
+            sx={{
+              paddingLeft: "32px",
+              "&:hover": {
+                backgroundColor: "#e0f2f1",
+              },
+            }}
+          >
+            Logout
+          </MenuItem>
         </Menu>
       </Box>
     </div>
