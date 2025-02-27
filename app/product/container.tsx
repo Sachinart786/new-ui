@@ -93,7 +93,9 @@ export const PageContainer = () => {
                     <Box
                       sx={{
                         width: "100%",
-                        height: "280px",
+                        height: 0, // Set height to 0 initially
+                        paddingBottom: "100%", // Create a square container using padding-bottom
+                        position: "relative",
                         borderRadius: "5px",
                         overflow: "hidden",
                         boxShadow: 1,
@@ -101,6 +103,7 @@ export const PageContainer = () => {
                           "transform 0.3s ease, background-color 0.3s ease",
                         "&:hover": {
                           backgroundColor: "rgba(194, 188, 188, 0.1)",
+                          transform: "scale(1.05)",
                         },
                       }}
                     >
@@ -108,9 +111,13 @@ export const PageContainer = () => {
                         src={item.image}
                         alt={item.title}
                         style={{
+                          position: "absolute", // Position the image inside the square Box
+                          top: "50%",
+                          left: "50%",
+                          transform: "translate(-50%, -50%)",
                           width: "100%",
                           height: "100%",
-                          objectFit: "cover",
+                          objectFit: "contain", // Ensures image fits inside the square without cropping
                         }}
                         loading="lazy"
                       />
@@ -122,7 +129,7 @@ export const PageContainer = () => {
                       sx={{
                         textAlign: "center",
                         mt: 1,
-                        fontSize: "16px",
+                        fontSize: { xs: "14px", sm: "16px", md: "16px" },
                         fontWeight: "bold",
                       }}
                     >
@@ -133,6 +140,7 @@ export const PageContainer = () => {
               ))}
             </Grid>
           )}
+
           {albums && albums.length > 0 && (
             <Stack
               spacing={2}
