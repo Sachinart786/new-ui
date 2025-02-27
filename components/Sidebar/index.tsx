@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import logo from "../../public/logo.png";
 import AccountCircle from "@mui/icons-material/AccountCircle";
-import { Box, IconButton, Menu, MenuItem } from "@mui/material";
+import { Box, Button, IconButton, Menu, MenuItem } from "@mui/material";
 import { searchAlbum } from "@/services/albumServices";
 
 const Sidebar = () => {
@@ -41,7 +41,7 @@ const Sidebar = () => {
         // onClick={() => console.log("Logo Clicked")}
       />
 
-      {/* <input
+      <input
         placeholder="Search..."
         type="text"
         value={name}
@@ -50,7 +50,7 @@ const Sidebar = () => {
 
       <Button variant="outlined" color="primary" onClick={handleSearch}>
         Search
-      </Button> */}
+      </Button>
 
       {/* Account Circle Icon */}
       <Box sx={{ display: { xs: "none", md: "flex" } }}>

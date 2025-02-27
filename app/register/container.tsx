@@ -6,8 +6,8 @@ import { useRouter } from "next/navigation";
 export const Registration = () => {
   const router = useRouter();
 
-  const handleClick = () => {
-    router.push("/register/signup");
+  const handleClick = (plan: number) => {
+    router.push(`/register/membership/${plan}`);
   };
   return (
     <div>
@@ -56,7 +56,7 @@ export const Registration = () => {
             <Button
               variant="contained"
               color="primary"
-              onClick={handleClick}
+              onClick={() => handleClick(599)}
               fullWidth
             >
               Choose Plan
@@ -95,7 +95,7 @@ export const Registration = () => {
             <Button
               variant="contained"
               color="primary"
-              onClick={handleClick}
+              onClick={() => handleClick(1599)}
               fullWidth
             >
               Choose Plan
@@ -134,7 +134,7 @@ export const Registration = () => {
             <Button
               variant="contained"
               color="primary"
-              onClick={handleClick}
+              onClick={() => handleClick(2599)}
               fullWidth
             >
               Choose Plan
@@ -173,7 +173,7 @@ export const Registration = () => {
             <Button
               variant="contained"
               color="primary"
-              onClick={handleClick}
+              onClick={() => handleClick(4999)}
               fullWidth
             >
               Choose Plan
