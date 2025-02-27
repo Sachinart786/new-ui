@@ -55,21 +55,24 @@ export const PageContainer: React.FC<PageContainerProps> = ({
           </Box>
           <Typography
             variant="body2"
-            sx={{ ...boldTextStyle, fontSize: "18px", mt: { xs: 0.5, sm: 1 } }}
+            color="#323c64"
+            sx={{ ...boldTextStyle, fontSize: "18px", mt: { xs: 1, sm: 2 } }}
           >
             {album.title} - {album.year}
           </Typography>
           <Typography
             variant="body1"
-            sx={{ ...boldTextStyle, fontSize: "16px", mt: { xs: 0.5, sm: 1 } }}
+            color="#323c64"
+            sx={{ ...boldTextStyle, fontSize: "16px" }}
           >
-            Music: {album.music}
+            {album.music}
           </Typography>
           <Typography
             variant="body1"
-            sx={{ ...boldTextStyle, fontSize: "16px", mt: { xs: 0.5, sm: 1 } }}
+            color="#323c64"
+            sx={{ ...boldTextStyle, fontSize: "16px" }}
           >
-            Lyric: {album.lyric}
+            {album.lyric}
           </Typography>
         </Grid>
 
@@ -134,16 +137,18 @@ export const PageContainer: React.FC<PageContainerProps> = ({
 
           <Typography
             variant="body2"
+            color="#323c64"
             sx={{
               fontSize: "14px",
               ...boldTextStyle,
-              mt: { xs: 1, sm: 4 },
+              mt: { xs: 2, sm: 4 },
             }}
           >
             Playing Time: {album.playingTime}
           </Typography>
           <Typography
             variant="body2"
+            color="#323c64"
             sx={{
               fontSize: "14px",
               ...boldTextStyle,
@@ -156,7 +161,7 @@ export const PageContainer: React.FC<PageContainerProps> = ({
           <Stack
             direction="row"
             justifyContent="flex-end"
-            sx={{ mt: { xs: 1, sm: 3 } }}
+            sx={{ mt: { xs: 0.5, sm: 3 } }}
           >
             <Link
               href={
