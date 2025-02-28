@@ -2,9 +2,9 @@ import { Metadata } from "next";
 import HomeContainer from "@/components/Home";
 
 export const metadata: Metadata = {
-  title: "Download High-Quality FLAC Songs | Free Lossless Audio",
+  title: "Download High Quality FLAC Songs | Free Lossless Audio",
   description:
-    "Download high-quality FLAC format songs for free. Get the best lossless audio in FLAC format from a wide selection of music genres. Enjoy the best sound quality available online.",
+    "Download high quality FLAC format songs for free. Get the best lossless audio in FLAC format from a wide selection of music genres. Enjoy the best sound quality available online.",
   keywords:
     "FLAC download, free music, lossless audio, high-quality songs, FLAC format, music download",
   openGraph: {
