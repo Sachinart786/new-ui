@@ -2,8 +2,6 @@
 import React, { useState } from "react";
 import {
   Grid,
-  Card,
-  CardContent,
   TextField,
   Button,
   Typography,
@@ -19,7 +17,7 @@ export const LoginContainer = () => {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const handleClick = async () => {
     const payload = {
@@ -50,9 +48,19 @@ export const LoginContainer = () => {
 
   return (
     <div>
-      <Grid container spacing={3} mt={12}>
+      <Grid container spacing={3} mt={6} p={4}>
         <Grid item xs={12}>
-          <h2 style={{ textAlign: "center" }}>Login</h2>
+          <Typography
+            variant="body1"
+            color="#323c64"
+            sx={{
+              fontSize: "21px",
+              fontWeight: "bold",
+              textAlign: "center",
+            }}
+          >
+            Login
+          </Typography>
         </Grid>
         <Grid item xs={12}>
           <TextField

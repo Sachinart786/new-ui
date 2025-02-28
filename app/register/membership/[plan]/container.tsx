@@ -1,9 +1,16 @@
 "use client";
 import React, { useState } from "react";
-import { Grid, Card, TextField, Button, Typography } from "@mui/material";
+import {
+  Grid,
+  TextField,
+  Button,
+  Typography,
+  CircularProgress,
+} from "@mui/material";
 import Link from "next/link";
 import { createAccount } from "@/services/authServices";
 import { get } from "lodash";
+import Success from "@/components/Success";
 
 export const PageContainer = ({ price }: any) => {
   const [name, setName] = useState("");
@@ -12,6 +19,8 @@ export const PageContainer = ({ price }: any) => {
     name: "",
     email: "",
   });
+
+  const [loading, setLoading] = useState<boolean>(false);
 
   const validateEmail = (email: string) => {
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -44,18 +53,30 @@ export const PageContainer = ({ price }: any) => {
         email,
         price,
       };
+      setLoading(true);
       const res = await createAccount(payload);
       if (get(res, "success", false)) {
-        alert("Account created successfully");
+        setLoading(false);
+        <Success onClose={() => {}} msg="Email Sent Successfully" />;
       }
     }
   };
 
   return (
     <div>
-      <Grid container spacing={3} mt={12}>
+      <Grid container spacing={3} mt={6} p={4}>
         <Grid item xs={12}>
-          <h2 style={{ textAlign: "center" }}>Get Your Membership</h2>
+          <Typography
+            variant="body2"
+            color="#7681ab"
+            sx={{
+              fontSize: "18px",
+              fontWeight: "bold",
+              textAlign: "center",
+            }}
+          >
+            Get Your Membership
+          </Typography>
         </Grid>
         <Grid item xs={12}>
           <TextField
@@ -100,8 +121,9 @@ export const PageContainer = ({ price }: any) => {
             color="success"
             fullWidth
             onClick={handleClick}
+            disabled={loading}
           >
-            Submit & Checkout
+            {loading ? <CircularProgress size="sm" /> : "Submit & Checkout"}
           </Button>
         </Grid>
         <Grid item xs={12}>

@@ -130,13 +130,31 @@ const Sidebar = () => {
           >
             Music Director
           </MenuItem> */}
-          <MenuItem onClick={handleMenuClose} sx={menuStyle}>
+          <MenuItem
+            onClick={handleMenuClose}
+            sx={{
+              ...menuStyle,
+              padding: { xs: "8px 16px", sm: "12px 16px" },
+            }}
+          >
             REGISTER
           </MenuItem>
-          <MenuItem onClick={handleMenuClose} sx={menuStyle}>
+          <MenuItem
+            onClick={handleMenuClose}
+            sx={{
+              ...menuStyle,
+              padding: { xs: "8px 16px", sm: "12px 16px" },
+            }}
+          >
             ACCOUNT
           </MenuItem>
-          <MenuItem onClick={handleMenuClose} sx={menuStyle}>
+          <MenuItem
+            onClick={handleMenuClose}
+            sx={{
+              ...menuStyle,
+              padding: { xs: "8px 16px", sm: "12px 16px" },
+            }}
+          >
             LOGOUT
           </MenuItem>
         </Menu>
