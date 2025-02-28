@@ -1,11 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import {
-  Grid,
-  TextField,
-  Button,
-  Typography,
-} from "@mui/material";
+import { Grid, TextField, Button, Typography } from "@mui/material";
 import CircularProgress from "@mui/joy/CircularProgress";
 import { Login } from "@/services/authServices";
 import { setCookie } from "cookies-next";
@@ -34,8 +29,7 @@ export const LoginContainer = () => {
         setTimeout(() => {
           router.push("/");
         }, 0);
-        // showSuccess(toaster, "Login Successfully");
-        // showSuccess("Login Successfully");
+        alert("Login Successfully");
       } else {
         // showError("Invalid email or password");
       }

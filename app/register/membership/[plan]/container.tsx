@@ -1,16 +1,10 @@
 "use client";
 import React, { useState } from "react";
-import {
-  Grid,
-  TextField,
-  Button,
-  Typography,
-  CircularProgress,
-} from "@mui/material";
+import { Grid, TextField, Button, Typography } from "@mui/material";
 import Link from "next/link";
 import { createAccount } from "@/services/authServices";
 import { get } from "lodash";
-import Success from "@/components/Success";
+import CircularProgress from "@mui/joy/CircularProgress";
 
 export const PageContainer = ({ price }: any) => {
   const [name, setName] = useState("");
@@ -57,7 +51,7 @@ export const PageContainer = ({ price }: any) => {
       const res = await createAccount(payload);
       if (get(res, "success", false)) {
         setLoading(false);
-        <Success onClose={() => {}} msg="Email Sent Successfully" />;
+        alert("Email Sent Successfully");
       }
     }
   };
@@ -123,7 +117,11 @@ export const PageContainer = ({ price }: any) => {
             onClick={handleClick}
             disabled={loading}
           >
-            {loading ? <CircularProgress size="sm" /> : "Submit & Checkout"}
+            {loading ? (
+              <CircularProgress size="sm" variant="solid" />
+            ) : (
+              "Submit & Checkout"
+            )}
           </Button>
         </Grid>
         <Grid item xs={12}>
