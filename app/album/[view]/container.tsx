@@ -1,7 +1,7 @@
 "use client";
-import { Stack, Button, Typography, Box, Grid } from "@mui/material";
-import Link from "next/link";
 import React from "react";
+import Link from "next/link";
+import { Stack, Button, Typography, Box, Grid } from "@mui/material";
 
 interface Track {
   _id: string;
@@ -36,7 +36,6 @@ export const PageContainer: React.FC<PageContainerProps> = ({
   return (
     <Box>
       <Grid container spacing={{ xs: 2, sm: 8 }} alignItems="flex-start">
-        {/* Left Column - Album Image and Info */}
         <Grid item xs={12} sm={4} sx={{ textAlign: "center" }}>
           <Box sx={{ width: "100%", height: "100%" }}>
             <img
@@ -76,7 +75,6 @@ export const PageContainer: React.FC<PageContainerProps> = ({
           </Typography>
         </Grid>
 
-        {/* Right Column - Tracks & Additional Info */}
         <Grid item xs={12} sm={8}>
           <Typography
             variant="body1"

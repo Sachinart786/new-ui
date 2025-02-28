@@ -20,7 +20,6 @@ export const LoginContainer = () => {
       password,
     };
     setLoading(true);
-
     try {
       const res = await Login(payload);
       if (get(res, "success", false)) {
@@ -31,7 +30,7 @@ export const LoginContainer = () => {
         }, 0);
         alert("Login Successfully");
       } else {
-        // showError("Invalid email or password");
+        alert("Invalid email or password");
       }
     } catch (error) {
       console.error("Login error:", error);
