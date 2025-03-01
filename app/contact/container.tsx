@@ -1,7 +1,6 @@
 "use client";
 import { Grid, Typography } from "@mui/material";
 import CallIcon from "@mui/icons-material/Call";
-import { useRouter } from "next/navigation";
 import Image from "next/image";
 import instagram from "../../public/instagram.png";
 import facebook from "../../public/facebook.png";
@@ -17,12 +16,6 @@ const hover = {
 };
 
 export const PageContainer = () => {
-  const router = useRouter();
-
-  const handleClick = (plan: number) => {
-    router.push(`/register/membership/${plan}`);
-  };
-
   return (
     <div>
       <Grid container spacing={3} justifyContent="center" mt={{ sm: 4, md: 6 }}>
@@ -54,8 +47,8 @@ export const PageContainer = () => {
           >
             <Image
               src={instagram}
-              width={220}
-              height={220}
+              width={170}
+              height={170}
               alt="Instagram Logo"
             />
           </Grid>
@@ -72,8 +65,8 @@ export const PageContainer = () => {
           >
             <Image
               src={facebook}
-              width={300}
-              height={300}
+              width={240}
+              height={240}
               alt="Facebook Logo"
             />
           </Grid>
@@ -88,7 +81,7 @@ export const PageContainer = () => {
             alignItems="center"
             sx={hover}
           >
-            <Image src={email} width={300} height={300} alt="Email Logo" />
+            <Image src={email} width={240} height={240} alt="Email Logo" />
           </Grid>
 
           <Grid
@@ -103,8 +96,8 @@ export const PageContainer = () => {
           >
             <Image
               src={whatsapp}
-              width={160}
-              height={160}
+              width={130}
+              height={130}
               alt="WhatsApp Logo"
             />
           </Grid>
@@ -121,8 +114,8 @@ export const PageContainer = () => {
           >
             <Image
               src={telegram}
-              width={170}
-              height={170}
+              width={135}
+              height={140}
               alt="Telegram Logo"
             />
           </Grid>
@@ -140,8 +133,10 @@ export const PageContainer = () => {
               justifyContent: "center",
             }}
           >
-            <CallIcon sx={{ color: "#40cae3", marginRight: "8px", marginTop: "4px" }} /> +91
-            9908827608
+            <CallIcon
+              sx={{ color: "#40cae3", marginRight: "8px", marginTop: "4px" }}
+            />{" "}
+            +91 9908827608
           </Typography>
         </Grid>
       </Grid>
