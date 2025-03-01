@@ -43,10 +43,21 @@ export const PageContainer = () => {
             alignItems="center"
             sx={hover}
           >
+            <Image src={email} width={140} height={140} alt="Email Logo" />
+          </Grid>
+
+          <Grid
+            item
+            xs={2}
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            sx={hover}
+          >
             <Image
               src={facebook}
-              width={160}
-              height={160}
+              width={140}
+              height={140}
               alt="Facebook Logo"
             />
           </Grid>
@@ -59,7 +70,7 @@ export const PageContainer = () => {
             alignItems="center"
             sx={hover}
           >
-            <Image src={email} width={160} height={160} alt="Email Logo" />
+            <Image src={whatsapp} width={96} height={96} alt="WhatsApp Logo" />
           </Grid>
 
           <Grid
@@ -70,28 +81,7 @@ export const PageContainer = () => {
             alignItems="center"
             sx={hover}
           >
-            <Image
-              src={whatsapp}
-              width={105}
-              height={105}
-              alt="WhatsApp Logo"
-            />
-          </Grid>
-
-          <Grid
-            item
-            xs={2}
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
-            sx={hover}
-          >
-            <Image
-              src={telegram}
-              width={80}
-              height={85}
-              alt="Telegram Logo"
-            />
+            <Image src={telegram} width={82} height={82} alt="Telegram Logo" />
           </Grid>
 
           <Grid
@@ -104,8 +94,8 @@ export const PageContainer = () => {
           >
             <Image
               src={instagram}
-              width={110}
-              height={110}
+              width={100}
+              height={100}
               alt="Instagram Logo"
             />
           </Grid>
