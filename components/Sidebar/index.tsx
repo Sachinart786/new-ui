@@ -13,6 +13,7 @@ import {
   Typography,
 } from "@mui/material";
 import { searchAlbum } from "@/services/albumServices";
+import Link from "next/link";
 
 const menuStyle = {
   paddingLeft: "18px",
@@ -111,7 +112,7 @@ const Sidebar = () => {
             variant="body1"
             sx={{
               fontWeight: "bold",
-              color: "#00796b",
+              color: "#323c64",
               marginBottom: 0.5,
               marginLeft: 2,
             }}
@@ -130,29 +131,55 @@ const Sidebar = () => {
           >
             Music Director
           </MenuItem> */}
-          <MenuItem
-            onClick={handleMenuClose}
-            sx={{
-              ...menuStyle,
-              padding: { xs: "8px 16px", sm: "12px 16px" },
-            }}
+
+          <Link
+            href="/register"
+            style={{ textDecoration: "none", color: "#7681ab" }}
           >
-            REGISTER
-          </MenuItem>
-          <MenuItem
-            onClick={handleMenuClose}
-            sx={{
-              ...menuStyle,
-              padding: { xs: "8px 16px", sm: "12px 16px" },
-            }}
+            <MenuItem
+              onClick={handleMenuClose}
+              sx={{
+                ...menuStyle,
+                padding: { xs: "8px 16px", sm: "12px 16px" },
+              }}
+            >
+              REGISTER
+            </MenuItem>
+          </Link>
+          <Link
+            href="/account"
+            style={{ textDecoration: "none", color: "#7681ab" }}
           >
-            ACCOUNT
-          </MenuItem>
+            <MenuItem
+              onClick={handleMenuClose}
+              sx={{
+                ...menuStyle,
+                padding: { xs: "8px 16px", sm: "12px 16px" },
+              }}
+            >
+              ACCOUNT
+            </MenuItem>
+          </Link>
+          <Link
+            href="/contact"
+            style={{ textDecoration: "none", color: "#7681ab" }}
+          >
+            <MenuItem
+              onClick={handleMenuClose}
+              sx={{
+                ...menuStyle,
+                padding: { xs: "8px 16px", sm: "12px 16px" },
+              }}
+            >
+              CONTACT US
+            </MenuItem>
+          </Link>
           <MenuItem
             onClick={handleMenuClose}
             sx={{
               ...menuStyle,
               padding: { xs: "8px 16px", sm: "12px 16px" },
+              color: "#7681ab"
             }}
           >
             LOGOUT
