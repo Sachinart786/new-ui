@@ -4,7 +4,7 @@ import CallIcon from "@mui/icons-material/Call";
 import Image from "next/image";
 import instagram from "../../public/instagram.png";
 import facebook from "../../public/facebook.png";
-import whatsapp from "../../public/whatsapp.jpg";
+import whatsapp from "../../public/whatapp.png";
 import telegram from "../../public/telegram.png";
 import email from "../../public/email.png";
 
@@ -96,8 +96,8 @@ export const PageContainer = () => {
           >
             <Image
               src={whatsapp}
-              width={130}
-              height={130}
+              width={170}
+              height={170}
               alt="WhatsApp Logo"
             />
           </Grid>
