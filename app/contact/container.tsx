@@ -34,30 +34,10 @@ export const PageContainer = () => {
         </Grid>
 
         {/* Grid for Images in a Single Row */}
-        <Grid container item xs={12} spacing={3} justifyContent="center">
+        <Grid container item xs={12} spacing={10} justifyContent="center">
           <Grid
             item
-            xs={12}
-            sm={6}
-            md={2}
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
-            sx={hover}
-          >
-            <Image
-              src={instagram}
-              width={170}
-              height={170}
-              alt="Instagram Logo"
-            />
-          </Grid>
-
-          <Grid
-            item
-            xs={12}
-            sm={6}
-            md={2}
+            xs={2}
             display="flex"
             justifyContent="center"
             alignItems="center"
@@ -65,30 +45,26 @@ export const PageContainer = () => {
           >
             <Image
               src={facebook}
-              width={240}
-              height={240}
+              width={200}
+              height={200}
               alt="Facebook Logo"
             />
           </Grid>
 
           <Grid
             item
-            xs={12}
-            sm={6}
-            md={2}
+            xs={2}
             display="flex"
             justifyContent="center"
             alignItems="center"
             sx={hover}
           >
-            <Image src={email} width={240} height={240} alt="Email Logo" />
+            <Image src={email} width={200} height={200} alt="Email Logo" />
           </Grid>
 
           <Grid
             item
-            xs={12}
-            sm={6}
-            md={2}
+            xs={2}
             display="flex"
             justifyContent="center"
             alignItems="center"
@@ -96,17 +72,15 @@ export const PageContainer = () => {
           >
             <Image
               src={whatsapp}
-              width={170}
-              height={170}
+              width={145}
+              height={145}
               alt="WhatsApp Logo"
             />
           </Grid>
 
           <Grid
             item
-            xs={12}
-            sm={6}
-            md={2}
+            xs={2}
             display="flex"
             justifyContent="center"
             alignItems="center"
@@ -114,9 +88,25 @@ export const PageContainer = () => {
           >
             <Image
               src={telegram}
-              width={135}
-              height={140}
+              width={120}
+              height={125}
               alt="Telegram Logo"
+            />
+          </Grid>
+
+          <Grid
+            item
+            xs={2}
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            sx={hover}
+          >
+            <Image
+              src={instagram}
+              width={150}
+              height={150}
+              alt="Instagram Logo"
             />
           </Grid>
         </Grid>
