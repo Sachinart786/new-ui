@@ -1,5 +1,7 @@
+import { PageContainer } from "./container";
+
 const Contact = () => {
-  return <h1>Contact</h1>;
+  return <PageContainer />;
 };
 
 export default Contact;
