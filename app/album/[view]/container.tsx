@@ -164,7 +164,7 @@ export const PageContainer: React.FC<PageContainerProps> = ({
             <Link
               href={
                 isToken
-                  ? `https://new-apis-beryl.vercel.app/api/v1/download/${album.id}`
+                  ? `https://new-apis-beryl.vercel.app/api/v1/files/download/${album.id}`
                   : "#"
               }
               passHref
