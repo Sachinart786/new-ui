@@ -16,6 +16,7 @@ import { useDispatch } from "react-redux";
 import Link from "next/link";
 import { handleData } from "@/store/albumReducer";
 import { get } from "lodash";
+import { usePathname } from "next/navigation";
 
 const menuStyle = {
   paddingLeft: "18px",
@@ -27,6 +28,7 @@ const menuStyle = {
 };
 
 const Sidebar = () => {
+  const path = usePathname();
   const dispatch = useDispatch();
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -81,64 +83,65 @@ const Sidebar = () => {
         style={{ border: "none", background: "none" }}
       />
 
-      <Box>
-        <IconButton
-          size="large"
-          edge="end"
-          aria-label="account of current user"
-          aria-haspopup="true"
-          onClick={handleMenuClick}
-          color="info"
-          sx={{ marginRight: "1px" }}
-        >
-          <MenuRoundedIcon />
-        </IconButton>
+      {path === "/" ? (
+        <Box>
+          <IconButton
+            size="large"
+            edge="end"
+            aria-label="account of current user"
+            aria-haspopup="true"
+            onClick={handleMenuClick}
+            color="info"
+            sx={{ marginRight: "1px" }}
+          >
+            <MenuRoundedIcon />
+          </IconButton>
 
-        <Menu
-          anchorEl={anchorEl}
-          open={Boolean(anchorEl)}
-          onClose={handleMenuClose}
-          sx={{
-            "& .MuiMenu-paper": {
-              borderRadius: "5px",
-              padding: "16px",
-              minWidth: "250px",
-            },
-          }}
-        >
-          <MenuItem
+          <Menu
+            anchorEl={anchorEl}
+            open={Boolean(anchorEl)}
+            onClose={handleMenuClose}
             sx={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
+              "& .MuiMenu-paper": {
+                borderRadius: "5px",
+                padding: "16px",
+                minWidth: "250px",
+              },
             }}
           >
-            <TextField
-              variant="outlined"
-              size="small"
-              placeholder="Search..."
-              value={name}
-              onChange={(e) => {
-                setName(e.target.value);
-                setErr("");
-              }}
-              error={Boolean(err)}
-              helperText={err}
+            <MenuItem
               sx={{
-                flexGrow: 1,
-                backgroundColor: "#e0f2f1",
-                borderRadius: "8px",
-                marginRight: 1,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
               }}
-            />
-            <IconButton onClick={handleSearch}>
-              <SearchOutlinedIcon sx={{ color: "#00796b" }} />
-            </IconButton>
-          </MenuItem>
+            >
+              <TextField
+                variant="outlined"
+                size="small"
+                placeholder="Search..."
+                value={name}
+                onChange={(e) => {
+                  setName(e.target.value);
+                  setErr("");
+                }}
+                error={Boolean(err)}
+                helperText={err}
+                sx={{
+                  flexGrow: 1,
+                  backgroundColor: "#e0f2f1",
+                  borderRadius: "8px",
+                  marginRight: 1,
+                }}
+              />
+              <IconButton onClick={handleSearch}>
+                <SearchOutlinedIcon sx={{ color: "#00796b" }} />
+              </IconButton>
+            </MenuItem>
 
-          <Divider sx={{ margin: "8px 0" }} />
+            <Divider sx={{ margin: "8px 0" }} />
 
-          {/* <Typography
+            {/* <Typography
             variant="body1"
             sx={{
               fontWeight: "bold",
@@ -150,7 +153,7 @@ const Sidebar = () => {
             Menu
           </Typography> */}
 
-          {/* <MenuItem
+            {/* <MenuItem
             onClick={handleMenuClose}
             sx={{
               paddingLeft: "32px",
@@ -162,60 +165,61 @@ const Sidebar = () => {
             Music Director
           </MenuItem> */}
 
-          <Link
-            href="/register"
-            style={{ textDecoration: "none", color: "#7681ab" }}
-          >
+            <Link
+              href="/register"
+              style={{ textDecoration: "none", color: "#7681ab" }}
+            >
+              <MenuItem
+                onClick={handleMenuClose}
+                sx={{
+                  ...menuStyle,
+                  padding: { xs: "8px 16px", sm: "12px 16px" },
+                }}
+              >
+                REGISTER
+              </MenuItem>
+            </Link>
+            <Link
+              href="/account"
+              style={{ textDecoration: "none", color: "#7681ab" }}
+            >
+              <MenuItem
+                onClick={handleMenuClose}
+                sx={{
+                  ...menuStyle,
+                  padding: { xs: "8px 16px", sm: "12px 16px" },
+                }}
+              >
+                ACCOUNT
+              </MenuItem>
+            </Link>
+            <Link
+              href="/contact"
+              style={{ textDecoration: "none", color: "#7681ab" }}
+            >
+              <MenuItem
+                onClick={handleMenuClose}
+                sx={{
+                  ...menuStyle,
+                  padding: { xs: "8px 16px", sm: "12px 16px" },
+                }}
+              >
+                CONTACT US
+              </MenuItem>
+            </Link>
             <MenuItem
               onClick={handleMenuClose}
               sx={{
                 ...menuStyle,
                 padding: { xs: "8px 16px", sm: "12px 16px" },
+                color: "#7681ab",
               }}
             >
-              REGISTER
+              LOGOUT
             </MenuItem>
-          </Link>
-          <Link
-            href="/account"
-            style={{ textDecoration: "none", color: "#7681ab" }}
-          >
-            <MenuItem
-              onClick={handleMenuClose}
-              sx={{
-                ...menuStyle,
-                padding: { xs: "8px 16px", sm: "12px 16px" },
-              }}
-            >
-              ACCOUNT
-            </MenuItem>
-          </Link>
-          <Link
-            href="/contact"
-            style={{ textDecoration: "none", color: "#7681ab" }}
-          >
-            <MenuItem
-              onClick={handleMenuClose}
-              sx={{
-                ...menuStyle,
-                padding: { xs: "8px 16px", sm: "12px 16px" },
-              }}
-            >
-              CONTACT US
-            </MenuItem>
-          </Link>
-          <MenuItem
-            onClick={handleMenuClose}
-            sx={{
-              ...menuStyle,
-              padding: { xs: "8px 16px", sm: "12px 16px" },
-              color: "#7681ab",
-            }}
-          >
-            LOGOUT
-          </MenuItem>
-        </Menu>
-      </Box>
+          </Menu>
+        </Box>
+      ) : null}
     </div>
   );
 };
