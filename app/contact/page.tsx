@@ -17,7 +17,7 @@ const Contact = () => {
             variant="body1"
             color="#323c64"
             sx={{
-              fontSize: "21px",
+              fontSize: { xs: "18px", sm: "21px" }, // Adjust font size based on screen size
               fontWeight: "bold",
               textAlign: "center",
             }}
@@ -57,8 +57,7 @@ const Contact = () => {
             >
               <Image
                 src={facebook}
-                width={128}
-                height={128}
+                width={128} height={128}
                 alt="Facebook Logo"
               />
             </Link>
@@ -78,8 +77,7 @@ const Contact = () => {
             >
               <Image
                 src={whatsapp}
-                width={86}
-                height={86}
+                width={86} height={86}
                 alt="WhatsApp Logo"
               />
             </Link>
@@ -99,8 +97,7 @@ const Contact = () => {
             >
               <Image
                 src={telegram}
-                width={72}
-                height={72}
+                width={72} height={72}
                 alt="Telegram Logo"
               />
             </Link>
@@ -120,19 +117,19 @@ const Contact = () => {
             >
               <Image
                 src={instagram}
-                width={90}
-                height={90}
+                width={90} height={90}
                 alt="Instagram Logo"
               />
             </Link>
           </Grid>
         </Grid>
+
         <Grid item xs={12}>
           <Typography
             variant="body1"
             color="#323c64"
             sx={{
-              fontSize: "17px",
+              fontSize: { xs: "14px", sm: "17px" }, // Adjust phone vs tablet font sizes
               fontWeight: "bold",
               textAlign: "center",
               display: "flex",
