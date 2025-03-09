@@ -12,10 +12,12 @@ import {
 import { get } from "lodash";
 import { getAlbums } from "@/services/albumServices";
 import { useRouter } from "next/navigation";
+import { useSelector } from "react-redux";
 
 const HomeContainer = () => {
   const router = useRouter();
-  const [albums, setAlbums] = useState<[]>([]);
+  const { data } = useSelector((state: any) => state.album);
+  const [albums, setAlbums] = useState<any[]>([]);
   const [totalPages, setTotalPages] = useState<number>(0);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [loading, setLoading] = useState<boolean>(true);
@@ -23,7 +25,7 @@ const HomeContainer = () => {
   const itemsPerPage = 16;
 
   const getCachedAlbums = (page: number) => {
-    const cachedData = localStorage.getItem(`albums_page_${page}`);
+    const cachedData = sessionStorage.getItem(`albums_page_${page}`);
     if (cachedData) {
       const parsedData = JSON.parse(cachedData);
       setAlbums(parsedData.albums);
@@ -41,7 +43,7 @@ const HomeContainer = () => {
         setLoading(false);
         const fetchedAlbums = get(res, "data", []);
         const fetchedTotalPages = get(res, "totalPages", 0);
-        localStorage.setItem(
+        sessionStorage.setItem(
           `albums_page_${page}`,
           JSON.stringify({
             albums: fetchedAlbums,
@@ -67,6 +69,18 @@ const HomeContainer = () => {
     }
   }, [currentPage]);
 
+  useEffect(() => {
+    if (data && albums.length === 0) {
+      getProducts(currentPage);
+    } else {
+      const res = albums.find((item: any) => item.title === data.title);
+      if (res) {
+        setAlbums([res]);
+        console.log("Found album:", res);
+      }
+    }
+  }, [data]);
+
   const handlePageChange = (
     event: React.ChangeEvent<unknown>,
     value: number
@@ -86,7 +100,7 @@ const HomeContainer = () => {
             <Grid container spacing={3}>
               {albums.map((item: any) => (
                 <Grid item xs={12} sm={6} md={4} lg={3} key={item._id}>
-                  <div
+                  <Box
                     onClick={() => handleView(item._id)}
                     style={{ cursor: "pointer" }}
                   >
@@ -135,7 +149,7 @@ const HomeContainer = () => {
                     >
                       {item.title} - {item.year}
                     </Typography>
-                  </div>
+                  </Box>
                 </Grid>
               ))}
             </Grid>

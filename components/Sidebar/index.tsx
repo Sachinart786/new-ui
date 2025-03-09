@@ -10,10 +10,12 @@ import {
   Menu,
   MenuItem,
   TextField,
-  Typography,
 } from "@mui/material";
 import { searchAlbum } from "@/services/albumServices";
+import { useDispatch } from "react-redux";
 import Link from "next/link";
+import { handleData } from "@/store/albumReducer";
+import { get } from "lodash";
 
 const menuStyle = {
   paddingLeft: "18px",
@@ -25,8 +27,11 @@ const menuStyle = {
 };
 
 const Sidebar = () => {
+  const dispatch = useDispatch();
+
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [name, setName] = useState<string>("");
+  const [err, setErr] = useState<string>("");
 
   const handleMenuClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -37,14 +42,33 @@ const Sidebar = () => {
   };
 
   const handleSearch = async () => {
-    const res = await searchAlbum(name);
+    if (!name) {
+      setErr("Please Enter Something...");
+      return;
+    }
+    setErr("");
+    setAnchorEl(null);
+    try {
+      const res = await searchAlbum(name);
+
+      if (get(res, "success", false)) {
+        dispatch(handleData(get(res, "data", [])));
+        setName("");
+      } else {
+        setErr("No results found.");
+      }
+    } catch (error) {
+      setErr("An error occurred. Please try again.");
+      console.error(error);
+    }
   };
 
   return (
     <div
       style={{
         display: "flex",
-        padding: "8px",
+        // padding: "2px",
+        marginLeft: "12px",
         justifyContent: "space-between",
         alignItems: "center",
       }}
@@ -65,6 +89,7 @@ const Sidebar = () => {
           aria-haspopup="true"
           onClick={handleMenuClick}
           color="info"
+          sx={{ marginRight: "1px" }}
         >
           <MenuRoundedIcon />
         </IconButton>
@@ -93,7 +118,12 @@ const Sidebar = () => {
               size="small"
               placeholder="Search..."
               value={name}
-              onChange={(e) => setName(e.target.value)}
+              onChange={(e) => {
+                setName(e.target.value);
+                setErr("");
+              }}
+              error={Boolean(err)}
+              helperText={err}
               sx={{
                 flexGrow: 1,
                 backgroundColor: "#e0f2f1",
@@ -108,7 +138,7 @@ const Sidebar = () => {
 
           <Divider sx={{ margin: "8px 0" }} />
 
-          <Typography
+          {/* <Typography
             variant="body1"
             sx={{
               fontWeight: "bold",
@@ -118,7 +148,7 @@ const Sidebar = () => {
             }}
           >
             Menu
-          </Typography>
+          </Typography> */}
 
           {/* <MenuItem
             onClick={handleMenuClose}
@@ -179,7 +209,7 @@ const Sidebar = () => {
             sx={{
               ...menuStyle,
               padding: { xs: "8px 16px", sm: "12px 16px" },
-              color: "#7681ab"
+              color: "#7681ab",
             }}
           >
             LOGOUT

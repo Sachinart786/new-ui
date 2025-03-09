@@ -41,7 +41,7 @@ const Contact = () => {
             alignItems="center"
             sx={hover}
           >
-            <Image src={email} width={140} height={140} alt="Email Logo" />
+            <Image src={email} width={134} height={134} alt="Email Logo" />
           </Grid>
 
           <Grid
@@ -54,8 +54,8 @@ const Contact = () => {
           >
             <Image
               src={facebook}
-              width={140}
-              height={140}
+              width={134}
+              height={134}
               alt="Facebook Logo"
             />
           </Grid>
@@ -68,7 +68,7 @@ const Contact = () => {
             alignItems="center"
             sx={hover}
           >
-            <Image src={whatsapp} width={96} height={96} alt="WhatsApp Logo" />
+            <Image src={whatsapp} width={90} height={90} alt="WhatsApp Logo" />
           </Grid>
 
           <Grid
@@ -79,7 +79,7 @@ const Contact = () => {
             alignItems="center"
             sx={hover}
           >
-            <Image src={telegram} width={82} height={82} alt="Telegram Logo" />
+            <Image src={telegram} width={76} height={76} alt="Telegram Logo" />
           </Grid>
 
           <Grid
@@ -92,8 +92,8 @@ const Contact = () => {
           >
             <Image
               src={instagram}
-              width={100}
-              height={100}
+              width={94}
+              height={94}
               alt="Instagram Logo"
             />
           </Grid>

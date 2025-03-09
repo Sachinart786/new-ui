@@ -16,12 +16,14 @@
     "@mui/material": "^6.4.0",
     "@mui/styled-engine-sc": "^6.4.0",
     "@mui/x-data-grid": "^7.24.0",
+    "@reduxjs/toolkit": "^2.6.1",
     "axios": "^1.7.9",
     "cookies-next": "^5.1.0",
     "lodash": "^4.17.21",
     "next": "15.1.5",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-redux": "^9.2.0",
     "styled-components": "^6.1.14"
   },
   "devDependencies": {
