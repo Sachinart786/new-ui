@@ -6,13 +6,7 @@ import facebook from "../../public/facebook.png";
 import whatsapp from "../../public/whatapp.png";
 import telegram from "../../public/telegram.png";
 import email from "../../public/email.png";
-
-const hover = {
-  "&:hover": {
-    transform: "scale(1.1)",
-    transition: "all 0.3s ease",
-  },
-};
+import Link from "next/link";
 
 const Contact = () => {
   return (
@@ -39,9 +33,14 @@ const Contact = () => {
             display="flex"
             justifyContent="center"
             alignItems="center"
-            sx={hover}
           >
-            <Image src={email} width={134} height={134} alt="Email Logo" />
+            <Link
+              href="https://t.me/+MFJDTgkzMoQwODJl"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Image src={email} width={128} height={128} alt="Email Logo" />
+            </Link>
           </Grid>
 
           <Grid
@@ -50,14 +49,19 @@ const Contact = () => {
             display="flex"
             justifyContent="center"
             alignItems="center"
-            sx={hover}
           >
-            <Image
-              src={facebook}
-              width={134}
-              height={134}
-              alt="Facebook Logo"
-            />
+            <Link
+              href="https://t.me/+MFJDTgkzMoQwODJl"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Image
+                src={facebook}
+                width={128}
+                height={128}
+                alt="Facebook Logo"
+              />
+            </Link>
           </Grid>
 
           <Grid
@@ -66,9 +70,19 @@ const Contact = () => {
             display="flex"
             justifyContent="center"
             alignItems="center"
-            sx={hover}
           >
-            <Image src={whatsapp} width={90} height={90} alt="WhatsApp Logo" />
+            <Link
+              href="https://wa.me/919908827608"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Image
+                src={whatsapp}
+                width={86}
+                height={86}
+                alt="WhatsApp Logo"
+              />
+            </Link>
           </Grid>
 
           <Grid
@@ -77,9 +91,19 @@ const Contact = () => {
             display="flex"
             justifyContent="center"
             alignItems="center"
-            sx={hover}
           >
-            <Image src={telegram} width={76} height={76} alt="Telegram Logo" />
+            <Link
+              href="https://t.me/+MFJDTgkzMoQwODJl"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Image
+                src={telegram}
+                width={72}
+                height={72}
+                alt="Telegram Logo"
+              />
+            </Link>
           </Grid>
 
           <Grid
@@ -88,14 +112,19 @@ const Contact = () => {
             display="flex"
             justifyContent="center"
             alignItems="center"
-            sx={hover}
           >
-            <Image
-              src={instagram}
-              width={94}
-              height={94}
-              alt="Instagram Logo"
-            />
+            <Link
+              href="https://t.me/+MFJDTgkzMoQwODJl"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Image
+                src={instagram}
+                width={90}
+                height={90}
+                alt="Instagram Logo"
+              />
+            </Link>
           </Grid>
         </Grid>
         <Grid item xs={12}>
