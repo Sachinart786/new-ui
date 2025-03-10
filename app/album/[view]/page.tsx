@@ -23,7 +23,7 @@ const View = async ({ params }: any) => {
             sizes="100vw"
             style={{
               borderRadius: "18px",
-              width: "320px",
+              width: "332px",
               height: "auto",
             }}
             priority
