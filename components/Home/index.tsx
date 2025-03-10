@@ -125,7 +125,7 @@ const HomeContainer = () => {
                       sx={{
                         textAlign: "center",
                         mt: 1,
-                        fontSize: "16px",
+                        fontSize: "17px",
                         fontWeight: "bold",
                       }}
                     >
