@@ -39,7 +39,7 @@ const Contact = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Image src={email} width={128} height={128} alt="Email Logo" />
+              <Image src={email} width={128} height={128} alt="Email Logo" priority />
             </Link>
           </Grid>
 
@@ -59,6 +59,7 @@ const Contact = () => {
                 src={facebook}
                 width={128} height={128}
                 alt="Facebook Logo"
+                priority
               />
             </Link>
           </Grid>
@@ -79,6 +80,7 @@ const Contact = () => {
                 src={whatsapp}
                 width={86} height={86}
                 alt="WhatsApp Logo"
+                priority
               />
             </Link>
           </Grid>
@@ -99,6 +101,7 @@ const Contact = () => {
                 src={telegram}
                 width={72} height={72}
                 alt="Telegram Logo"
+                priority
               />
             </Link>
           </Grid>
@@ -119,6 +122,7 @@ const Contact = () => {
                 src={instagram}
                 width={90} height={90}
                 alt="Instagram Logo"
+                priority
               />
             </Link>
           </Grid>

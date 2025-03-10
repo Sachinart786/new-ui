@@ -13,6 +13,7 @@ import { get } from "lodash";
 import { getAlbums } from "@/services/albumServices";
 import { useRouter } from "next/navigation";
 import { useSelector } from "react-redux";
+import Image from "next/image";
 
 const HomeContainer = () => {
   const router = useRouter();
@@ -104,38 +105,19 @@ const HomeContainer = () => {
                     onClick={() => handleView(item._id)}
                     style={{ cursor: "pointer" }}
                   >
-                    <Box
-                      sx={{
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      width={264}
+                      height={264}
+                      sizes="100vw"
+                      style={{
+                        borderRadius: "12px",
                         width: "100%",
-                        height: 0,
-                        paddingBottom: "100%",
-                        position: "relative",
-                        borderRadius: "5px",
-                        overflow: "hidden",
-                        boxShadow: 1,
-                        transition:
-                          "transform 0.3s ease, background-color 0.3s ease",
-                        "&:hover": {
-                          backgroundColor: "rgba(194, 188, 188, 0.1)",
-                          // transform: "scale(1.05)",
-                        },
+                        height: "auto",
                       }}
-                    >
-                      <img
-                        src={item.image}
-                        alt={item.title}
-                        style={{
-                          position: "absolute",
-                          top: "50%",
-                          left: "50%",
-                          transform: "translate(-50%, -50%)",
-                          width: "100%",
-                          height: "100%",
-                          objectFit: "contain",
-                        }}
-                        loading="lazy"
-                      />
-                    </Box>
+                      priority
+                    />
 
                     <Typography
                       variant="body2"
@@ -143,11 +125,11 @@ const HomeContainer = () => {
                       sx={{
                         textAlign: "center",
                         mt: 1,
-                        fontSize: { xs: "18px", sm: "18px", md: "18px" },
+                        fontSize: "16px",
                         fontWeight: "bold",
                       }}
                     >
-                      {item.title} - {item.year}
+                      {item.title}
                     </Typography>
                   </Box>
                 </Grid>

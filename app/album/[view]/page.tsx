@@ -1,6 +1,7 @@
 import { viewAlbum } from "@/services/albumServices";
 import { Stack, Button, Typography, Box, Grid } from "@mui/material";
 import { get } from "lodash";
+import Image from "next/image";
 import Link from "next/link";
 
 const boldTextStyle = { fontWeight: "bold" };
@@ -14,21 +15,19 @@ const View = async ({ params }: any) => {
     <Box>
       <Grid container spacing={{ xs: 2, sm: 8 }} alignItems="flex-start">
         <Grid item xs={12} sm={4} sx={{ textAlign: "center" }}>
-          <Box sx={{ width: "100%", height: "100%" }}>
-            <img
-              src={album.image || "/default-image.jpg"}
-              alt={album.title}
-              style={{
-                width: "100%",
-                height: "auto",
-                maxWidth: "90%",
-                borderRadius: "18px",
-                objectFit: "cover",
-                margin: "0 auto",
-              }}
-              loading="lazy"
-            />
-          </Box>
+          <Image
+            src={album.image}
+            alt={album.title}
+            width={260}
+            height={260}
+            sizes="100vw"
+            style={{
+              borderRadius: "18px",
+              width: "100%",
+              height: "auto",
+            }}
+            priority
+          />
           <Typography
             variant="body2"
             color="#323c64"
