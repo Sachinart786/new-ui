@@ -75,15 +75,17 @@ const Sidebar = () => {
         alignItems: "center",
       }}
     >
-      <Image
-        src={logo}
-        width={160}
-        height={44}
-        alt="logo"
-        style={{ border: "none", background: "none" }}
-      />
-
       {path === "/" ? (
+        <Image
+          src={logo}
+          width={160}
+          height={44}
+          alt="logo"
+          style={{ border: "none", background: "none" }}
+        />
+      ) : null}
+
+      {path.startsWith("/track/") ? (
         <Box>
           <IconButton
             size="large"
