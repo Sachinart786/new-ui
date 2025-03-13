@@ -288,7 +288,6 @@ export const PageContainer = () => {
         <Grid item xs={12} sm={4} sx={{ textAlign: "center" }}>
           <br />
           <br />
-          <br />
           <Image
             src="https://tips.in/wp-content/uploads/2019/02/Raaz-1024x1024.jpg"
             alt="https://tips.in/wp-content/uploads/2019/02/Raaz-1024x1024.jpg"
@@ -333,7 +332,6 @@ export const PageContainer = () => {
               type="audio/ogg"
             />
           </audio>
-          <br />
           <br />
           <br />
           <br />
