@@ -22,8 +22,8 @@ const View = async ({ params }: any) => {
             height={260}
             sizes="100vw"
             style={{
-              borderRadius: "18px",
-              width: "332px",
+              borderRadius: "5px",
+              width: "280px",
               height: "auto",
             }}
             priority

@@ -60,8 +60,11 @@ const HomeContainer = () => {
   };
 
   const handleView = (id: string) => {
-    router.push(`/album/${id}`);
+    router.push(`/playlist/${id}`);
   };
+  // const handleView = (id: string) => {
+  //   router.push(`/album/${id}`);
+  // };
 
   useEffect(() => {
     if (!getCachedAlbums(currentPage)) {
@@ -108,11 +111,11 @@ const HomeContainer = () => {
                     <Image
                       src={item.image}
                       alt={item.title}
-                      width={264}
-                      height={264}
+                      width={100}
+                      height={100}
                       sizes="100vw"
                       style={{
-                        borderRadius: "12px",
+                        borderRadius: "5px",
                         width: "100%",
                         height: "auto",
                       }}
@@ -121,11 +124,11 @@ const HomeContainer = () => {
 
                     <Typography
                       variant="body2"
-                      color="#323c64"
+                      // color="#323c64"
                       sx={{
                         textAlign: "center",
                         mt: 1,
-                        fontSize: "18px",
+                        fontSize: "17px",
                         fontWeight: "bold",
                       }}
                     >
