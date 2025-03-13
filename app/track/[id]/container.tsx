@@ -335,7 +335,7 @@ export const PageContainer = () => {
           <br />
           <br />
           <Box padding="10px">
-            <IconButton sx={{ marginLeft: "160px" }}>
+            <IconButton sx={{ marginLeft: "156px" }}>
               <FavoriteBorderIcon />
             </IconButton>
             <BorderLinearProgress
