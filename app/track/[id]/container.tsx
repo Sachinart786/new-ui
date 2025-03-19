@@ -203,7 +203,7 @@
 // };
 
 "use client";
-import { Box, Grid, Typography, Stack, IconButton } from "@mui/material";
+import { Box, Grid, Typography, IconButton } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { styled } from "@mui/material/styles";
 import React, { useState, useEffect, useRef } from "react";
@@ -254,6 +254,18 @@ export const PageContainer = () => {
         ref.current.play();
       }
       setPlay((prev) => !prev);
+    }
+  };
+
+  const handleClick = (e: any) => {
+    if (ref.current) {
+      const progressBar = e.currentTarget;
+      const clickPosition =
+      e.clientX - progressBar.getBoundingClientRect().left;
+      const progressBarWidth = progressBar.offsetWidth;
+      const newProgress = (clickPosition / progressBarWidth) * 100;
+      setProgress(newProgress);
+      ref.current.currentTime = (newProgress / 100) * ref.current.duration;
     }
   };
 
@@ -342,6 +354,7 @@ export const PageContainer = () => {
               sx={{ mt: "4px" }}
               variant="determinate"
               value={progress}
+              onClick={handleClick}
             />
 
             <Box
