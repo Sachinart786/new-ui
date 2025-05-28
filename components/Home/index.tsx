@@ -60,11 +60,8 @@ const HomeContainer = () => {
   };
 
   const handleView = (id: string) => {
-    router.push(`/playlist/${id}`);
+    router.push(`/album/${id}`);
   };
-  // const handleView = (id: string) => {
-  //   router.push(`/album/${id}`);
-  // };
 
   useEffect(() => {
     if (!getCachedAlbums(currentPage)) {

@@ -1,5 +1,12 @@
 import { viewAlbum } from "@/services/albumServices";
-import { Stack, Button, Typography, Box, Grid } from "@mui/material";
+import {
+  Stack,
+  Button,
+  Typography,
+  Box,
+  Grid,
+  Breadcrumbs,
+} from "@mui/material";
 import { get } from "lodash";
 import Image from "next/image";
 import Link from "next/link";
@@ -11,8 +18,28 @@ const View = async ({ params }: any) => {
   const res = await viewAlbum(view);
   const album = get(res, "data", []);
 
+  const breadcrumbs = [
+    <Link
+      // underline="hover"
+      key="1"
+      color="inherit"
+      href="/"
+      // onClick={handleClick}
+    >
+      Home
+    </Link>,
+    <Typography key="3" sx={{ color: "text.primary" }}>
+      {album.title}
+    </Typography>,
+  ];
+
   return (
     <Box>
+      <Stack spacing={2}>
+        <Breadcrumbs separator="›" aria-label="breadcrumb">
+          {breadcrumbs}
+        </Breadcrumbs>
+      </Stack>
       <Grid container spacing={{ xs: 2, sm: 8 }} alignItems="flex-start">
         <Grid item xs={12} sm={4} sx={{ textAlign: "center" }}>
           <Image
