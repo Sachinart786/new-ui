@@ -1,12 +1,15 @@
 "use client";
-
 import { Poppins } from "next/font/google";
-import SideBar from "@/components/Sidebar";
 import { Provider } from "react-redux";
 import store from "@/store";
 import "./globals.css";
 import theme from "@/theme";
+import dynamic from "next/dynamic";
 import { ThemeProvider } from "@mui/material";
+
+const DynamicSideBar = dynamic(() => import("@/components/Sidebar"), {
+  ssr: false,
+});
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -24,7 +27,7 @@ export default function RootLayout({
       <body className={poppins.variable}>
         <Provider store={store}>
           <ThemeProvider theme={theme}>
-            <SideBar />
+            <DynamicSideBar />
             <main style={{ padding: "12px" }}>{children}</main>
           </ThemeProvider>
         </Provider>

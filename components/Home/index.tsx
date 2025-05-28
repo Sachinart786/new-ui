@@ -9,84 +9,48 @@ import {
   Typography,
   Skeleton,
 } from "@mui/material";
-import { get } from "lodash";
-import { getAlbums } from "@/services/albumServices";
 import { useRouter } from "next/navigation";
 import { useSelector } from "react-redux";
 import Image from "next/image";
 
-const HomeContainer = () => {
+const itemsPerPage = 16;
+
+const HomeContainer = ({ album }: { album: any[] }) => {
   const router = useRouter();
   const { data } = useSelector((state: any) => state.album);
   const [albums, setAlbums] = useState<any[]>([]);
-  const [totalPages, setTotalPages] = useState<number>(0);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [loading, setLoading] = useState<boolean>(true);
 
-  const itemsPerPage = 16;
+  const totalPages = Math.ceil(album.length / itemsPerPage);
 
-  const getCachedAlbums = (page: number) => {
-    const cachedData = sessionStorage.getItem(`albums_page_${page}`);
-    if (cachedData) {
-      const parsedData = JSON.parse(cachedData);
-      setAlbums(parsedData.albums);
-      setTotalPages(parsedData.totalPages);
+  useEffect(() => {
+    if (album && album.length > 0) {
+      const start = (currentPage - 1) * itemsPerPage;
+      const end = start + itemsPerPage;
+      setAlbums(album.slice(start, end));
       setLoading(false);
-      return true;
     }
-    return false;
-  };
-
-  const getProducts = async (page: number) => {
-    try {
-      const res = await getAlbums(page, itemsPerPage);
-      if (get(res, "success", false)) {
-        setLoading(false);
-        const fetchedAlbums = get(res, "data", []);
-        const fetchedTotalPages = get(res, "totalPages", 0);
-        sessionStorage.setItem(
-          `albums_page_${page}`,
-          JSON.stringify({
-            albums: fetchedAlbums,
-            totalPages: fetchedTotalPages,
-          })
-        );
-        setAlbums(fetchedAlbums);
-        setTotalPages(fetchedTotalPages);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const handleView = (id: string) => {
-    router.push(`/album/${id}`);
-  };
+  }, [album, currentPage]);
 
   useEffect(() => {
-    if (!getCachedAlbums(currentPage)) {
-      setLoading(true);
-      getProducts(currentPage);
-    }
-  }, [currentPage]);
-
-  useEffect(() => {
-    if (data && albums.length === 0) {
-      getProducts(currentPage);
-    } else {
-      const res = albums.find((item: any) => item.title === data.title);
+    if (data) {
+      const res = album.find((item: any) => item.title === data.title);
       if (res) {
         setAlbums([res]);
-        console.log("Found album:", res);
       }
     }
-  }, [data]);
+  }, [data, album]);
 
   const handlePageChange = (
     event: React.ChangeEvent<unknown>,
     value: number
   ) => {
     setCurrentPage(value);
+  };
+
+  const handleView = (id: string) => {
+    router.push(`/album/${id}`);
   };
 
   return (

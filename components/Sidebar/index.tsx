@@ -16,7 +16,6 @@ import { useDispatch } from "react-redux";
 import Link from "next/link";
 import { handleData } from "@/store/albumReducer";
 import { get } from "lodash";
-import { usePathname } from "next/navigation";
 
 const menuStyle = {
   paddingLeft: "18px",
@@ -28,9 +27,7 @@ const menuStyle = {
 };
 
 const Sidebar = () => {
-  // const path = usePathname();
   const dispatch = useDispatch();
-
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [name, setName] = useState<string>("");
   const [err, setErr] = useState<string>("");
@@ -69,7 +66,6 @@ const Sidebar = () => {
     <div
       style={{
         display: "flex",
-        // padding: "2px",
         marginLeft: "12px",
         justifyContent: "space-between",
         alignItems: "center",
@@ -139,30 +135,6 @@ const Sidebar = () => {
           </MenuItem>
 
           <Divider sx={{ margin: "8px 0" }} />
-
-          {/* <Typography
-            variant="body1"
-            sx={{
-              fontWeight: "bold",
-              color: "#323c64",
-              marginBottom: 0.5,
-              marginLeft: 2,
-            }}
-          >
-            Menu
-          </Typography> */}
-
-          {/* <MenuItem
-            onClick={handleMenuClose}
-            sx={{
-              paddingLeft: "32px",
-              "&:hover": {
-                backgroundColor: "#e0f2f1",
-              },
-            }}
-          >
-            Music Director
-          </MenuItem> */}
 
           <Link
             href="/register"

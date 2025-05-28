@@ -1,5 +1,7 @@
 import { Metadata } from "next";
 import HomeContainer from "@/components/Home";
+import { getAlbums } from "@/services/albumServices";
+import { get } from "lodash";
 
 export const metadata: Metadata = {
   title: "Download High Quality FLAC Songs | Free Lossless Audio",
@@ -27,7 +29,9 @@ export const metadata: Metadata = {
   }
 };
 
-export default function Home() {
-  return <HomeContainer />;
+export default async function Home() {
+const res = await getAlbums(1, 16);
+const album = get(res, "data", []);
+  return <HomeContainer album={album} />;
 }
 
