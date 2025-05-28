@@ -5,9 +5,9 @@ import {
   Stack,
   Pagination,
   PaginationItem,
-  CircularProgress,
   Box,
   Typography,
+  Skeleton,
 } from "@mui/material";
 import { get } from "lodash";
 import { getAlbums } from "@/services/albumServices";
@@ -92,9 +92,21 @@ const HomeContainer = () => {
   return (
     <div style={{ height: "auto" }}>
       {loading ? (
-        <Stack justifyContent="center" alignItems="center" marginTop="210px">
-          <CircularProgress size={60} />
-        </Stack>
+        <Grid container spacing={3}>
+          {Array.from(new Array(8)).map((_, index) => (
+            <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
+              <Box>
+                <Skeleton
+                  variant="rectangular"
+                  width="100%"
+                  height={280}
+                  sx={{ borderRadius: "5px" }}
+                />
+                <Skeleton variant="text" height={28} sx={{ mt: 1 }} />
+              </Box>
+            </Grid>
+          ))}
+        </Grid>
       ) : (
         <>
           {albums && albums.length > 0 && (
@@ -108,8 +120,8 @@ const HomeContainer = () => {
                     <Image
                       src={item.image}
                       alt={item.title}
-                      width={100}
-                      height={100}
+                      width={60}
+                      height={60}
                       sizes="100vw"
                       style={{
                         borderRadius: "5px",
@@ -121,15 +133,15 @@ const HomeContainer = () => {
 
                     <Typography
                       variant="body2"
-                      // color="#323c64"
+                      color="#323c64"
                       sx={{
                         textAlign: "center",
                         mt: 1,
-                        fontSize: "17px",
+                        fontSize: "15px",
                         fontWeight: "bold",
                       }}
                     >
-                      {item.title}
+                      {item.title} - {item.year}
                     </Typography>
                   </Box>
                 </Grid>

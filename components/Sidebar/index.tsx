@@ -28,7 +28,7 @@ const menuStyle = {
 };
 
 const Sidebar = () => {
-  const path = usePathname();
+  // const path = usePathname();
   const dispatch = useDispatch();
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -75,15 +75,13 @@ const Sidebar = () => {
         alignItems: "center",
       }}
     >
-      {path === "/" ? (
-        <Image
-          src={logo}
-          width={160}
-          height={44}
-          alt="logo"
-          style={{ border: "none", background: "none" }}
-        />
-      ) : null}
+      <Image
+        src={logo}
+        width={160}
+        height={44}
+        alt="logo"
+        style={{ border: "none", background: "none" }}
+      />
 
       <Box>
         <IconButton
