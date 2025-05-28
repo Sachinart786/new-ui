@@ -4,7 +4,6 @@ import { Grid, TextField, Button, Typography } from "@mui/material";
 import Link from "next/link";
 import { createAccount } from "@/services/authServices";
 import { get } from "lodash";
-import CircularProgress from "@mui/joy/CircularProgress";
 
 export const PageContainer = ({ price }: any) => {
   const [name, setName] = useState("");
@@ -13,8 +12,6 @@ export const PageContainer = ({ price }: any) => {
     name: "",
     email: "",
   });
-
-  const [loading, setLoading] = useState<boolean>(false);
 
   const validateEmail = (email: string) => {
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -47,10 +44,8 @@ export const PageContainer = ({ price }: any) => {
         email,
         price,
       };
-      setLoading(true);
       const res = await createAccount(payload);
       if (get(res, "success", false)) {
-        setLoading(false);
         alert("Email Sent Successfully");
       }
     }
@@ -115,13 +110,8 @@ export const PageContainer = ({ price }: any) => {
             color="success"
             fullWidth
             onClick={handleClick}
-            disabled={loading}
           >
-            {loading ? (
-              <CircularProgress size="sm" variant="solid" />
-            ) : (
-              "Submit & Checkout"
-            )}
+            Submit & Checkout
           </Button>
         </Grid>
         <Grid item xs={12}>
