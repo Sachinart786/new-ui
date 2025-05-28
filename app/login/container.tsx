@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
 import { Grid, TextField, Button, Typography } from "@mui/material";
-import CircularProgress from "@mui/joy/CircularProgress";
 import { Login } from "@/services/authServices";
 import { setCookie } from "cookies-next";
 import Link from "next/link";
@@ -12,14 +11,12 @@ export const LoginContainer = () => {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [loading, setLoading] = useState<boolean>(false);
 
   const handleClick = async () => {
     const payload = {
       email,
       password,
     };
-    setLoading(true);
     try {
       const res = await Login(payload);
       if (get(res, "success", false)) {
@@ -34,8 +31,6 @@ export const LoginContainer = () => {
       }
     } catch (error) {
       console.error("Login error:", error);
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -86,9 +81,8 @@ export const LoginContainer = () => {
             size="medium"
             fullWidth
             onClick={handleClick}
-            disabled={loading}
           >
-            {loading ? <CircularProgress size="sm" variant="solid" /> : "Login"}
+            Login
           </Button>
         </Grid>
         <Grid item xs={12}>

@@ -71,13 +71,15 @@ const Sidebar = () => {
         alignItems: "center",
       }}
     >
-      <Image
-        src={logo}
-        width={160}
-        height={44}
-        alt="logo"
-        style={{ border: "none", background: "none" }}
-      />
+      <Link href="/" passHref>
+        <Image
+          src={logo}
+          width={160}
+          height={44}
+          alt="logo"
+          style={{ border: "none", background: "none" }}
+        />
+      </Link>
 
       <Box>
         <IconButton

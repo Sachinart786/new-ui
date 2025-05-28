@@ -2,7 +2,20 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    domains: ["tipsfilms.in", "tips.in", "is1-ssl.mzstatic.com"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "tipsfilms.in",
+      },
+      {
+        protocol: "https",
+        hostname: "tips.in",
+      },
+      {
+        protocol: "https",
+        hostname: "is1-ssl.mzstatic.com",
+      },
+    ],
   },
 };
 
