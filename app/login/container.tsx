@@ -9,28 +9,34 @@ import { useRouter } from "next/navigation";
 
 export const LoginContainer = () => {
   const router = useRouter();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
 
-  const handleClick = async () => {
-    const payload = {
-      email,
-      password,
-    };
+  const handleClick = async (): Promise<void> => {
+    if (!email || !password) {
+      alert("Please fill in both email and password");
+      return;
+    }
+
+    const payload = { email, password };
+
+    setLoading(true);
     try {
       const res = await Login(payload);
       if (get(res, "success", false)) {
         const token = get(res, "token", "");
         setCookie("token", token);
-        setTimeout(() => {
-          router.push("/");
-        }, 0);
         alert("Login Successfully");
+        router.push("/");
       } else {
         alert("Invalid email or password");
       }
     } catch (error) {
       console.error("Login error:", error);
+      alert("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -50,12 +56,13 @@ export const LoginContainer = () => {
             Login
           </Typography>
         </Grid>
+
         <Grid item xs={12}>
           <TextField
             variant="outlined"
             size="small"
             label="Enter Your Email"
-            type="text"
+            type="email"
             value={email}
             fullWidth
             onChange={(e) => setEmail(e.target.value)}
@@ -63,6 +70,7 @@ export const LoginContainer = () => {
             aria-label="Email address"
           />
         </Grid>
+
         <Grid item xs={12}>
           <TextField
             variant="outlined"
@@ -75,16 +83,19 @@ export const LoginContainer = () => {
             aria-label="Password"
           />
         </Grid>
+
         <Grid item xs={12}>
           <Button
             variant="contained"
             size="medium"
             fullWidth
             onClick={handleClick}
+            disabled={loading}
           >
-            Login
+            {loading ? "Logging in..." : "Login"}
           </Button>
         </Grid>
+
         <Grid item xs={12}>
           <Typography
             variant="body2"

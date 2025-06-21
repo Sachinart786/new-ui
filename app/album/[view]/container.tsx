@@ -4,7 +4,31 @@ import Link from "next/link";
 
 const boldTextStyle = { fontWeight: "bold" };
 
-export const PageContainer = ({ album }: any) => {
+interface Track {
+  readonly _id: string;
+  no: number;
+  title: string;
+  singers: string;
+  length: string;
+}
+
+interface Album {
+  readonly _id: string;
+  readonly id: string;
+  title: string;
+  image: string;
+  music: string;
+  lyric: string;
+  year: string;
+  playingTime: string;
+  totalSize: string;
+  tracks: Track[];
+}
+interface AlbumProps {
+  album: Album;
+}
+
+export const PageContainer = ({ album }: AlbumProps) => {
   return (
     <Box>
       <Grid container spacing={{ xs: 2, sm: 8 }} alignItems="flex-start">
